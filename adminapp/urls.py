@@ -4,5 +4,6 @@ from adminapp import views
 
 urlpatterns = [
     url(r'^login$', views.login, name='login'),
+    url(r'^barsco$', views.barsco, name='barsco'),
     url(r'^$', views.index, name='index'),
 ]
