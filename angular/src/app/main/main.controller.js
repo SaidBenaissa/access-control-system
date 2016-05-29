@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
+  function MainController($timeout, webDevTec, toastr, $auth, $log) {
     var vm = this;
 
     vm.awesomeThings = [];
@@ -15,10 +15,20 @@
     vm.showToastr = showToastr;
 
     activate();
+    login();
+
+    function login() {
+      $auth.login({
+        username: 'jozef',
+        password: ''
+      }).then(function (data) {
+        $log.debug(data);
+      });
+    }
 
     function activate() {
       getWebDevTec();
-      $timeout(function() {
+      $timeout(function () {
         vm.classAnimation = 'rubberBand';
       }, 4000);
     }
@@ -31,7 +41,7 @@
     function getWebDevTec() {
       vm.awesomeThings = webDevTec.getTec();
 
-      angular.forEach(vm.awesomeThings, function(awesomeThing) {
+      angular.forEach(vm.awesomeThings, function (awesomeThing) {
         awesomeThing.rank = Math.random();
       });
     }

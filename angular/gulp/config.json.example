@@ -1,10 +1,12 @@
 {
   "dev": {
-    "apiBase": "http://localhost:8000/",
-    "ENV": "dev"
+    "apiBase": "http://localhost:8000/api/",
+    "ENV": "dev",
+    "DEBUG": true
     },
   "prod": {
     "apiBase": "",
-    "ENV": "prod"
+    "ENV": "prod",
+    "DEBUG": false
   }
 }

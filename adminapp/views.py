@@ -4,12 +4,10 @@ from django.views.decorators.gzip import gzip_page
 from django.views.decorators.http import require_GET
 from rest_framework.renderers import JSONRenderer
 
-
+@require_GET
 def index(request):
-    return JSONRenderer().render({'a': 'aaa'})
-    return HttpResponse("som na indexe")
+
     return TemplateResponse(request, 'home.html')
-    # return HttpResponse("Hello, world. You're at the adminapp index.")
 
 
 def login(request):
