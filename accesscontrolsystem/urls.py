@@ -19,7 +19,8 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
     url(r'^api-token-auth', obtain_jwt_token),
-    url(r'^api-auth/', include('adminapp.urls', namespace='rest_framework'))
+    url(r'^t/', include('adminapp.urls'))
+    # url(r'^api-auth/', include('adminapp.urls', namespace='rest_framework'))
     # url(r'^adminapp/', include('adminapp.urls')),
     # url(r'^login/', include('adminapp.urls')),
     # url(r'^admin/', admin.site.urls),

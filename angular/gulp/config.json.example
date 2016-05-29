@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "apiBase": "http://localhost:8000/",
+    "ENV": "dev"
+    },
+  "prod": {
+    "apiBase": "",
+    "ENV": "prod"
+  }
+}
