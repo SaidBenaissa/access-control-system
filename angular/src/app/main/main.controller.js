@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, $auth, $log) {
+  function MainController($timeout, webDevTec, toastr, $auth, $log, $http, apiBase) {
     var vm = this;
 
     vm.awesomeThings = [];
@@ -23,6 +23,9 @@
         password: ''
       }).then(function (data) {
         $log.debug(data);
+        $http.get(apiBase + 'restricted/', function (data) {
+          console.log(data);
+        })
       });
     }
 

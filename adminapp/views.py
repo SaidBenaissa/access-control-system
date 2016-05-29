@@ -3,11 +3,7 @@ from django.template.response import TemplateResponse
 from django.views.decorators.gzip import gzip_page
 from django.views.decorators.http import require_GET
 from rest_framework.renderers import JSONRenderer
-
-@require_GET
-def index(request):
-
-    return TemplateResponse(request, 'home.html')
+from rest_framework_jwt.views import verify_jwt_token
 
 
 def login(request):
@@ -26,6 +22,7 @@ def login(request):
 
 
 def barsco(request):
+    verify_jwt_token
     # from django.contrib.auth import authenticate
     # user = authenticate(username='', password='')
     # if user is not None:
@@ -37,7 +34,7 @@ def barsco(request):
     # else:
     #     # the authentication system was unable to verify the username and password
     #     print("The username and password were incorrect.")
-    return HttpResponse("barsco")
+    return HttpResponse(verify_jwt_token)
 
 
 @require_GET
