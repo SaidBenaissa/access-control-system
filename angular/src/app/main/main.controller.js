@@ -24,7 +24,7 @@
       }).then(function (data) {
         $log.debug(data);
         $http.get(apiBase + 'restricted/', function (data) {
-          console.log(data);
+          $log.debug(data);
         })
       });
     }
