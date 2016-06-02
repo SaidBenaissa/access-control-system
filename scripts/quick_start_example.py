@@ -4,6 +4,7 @@
 import threading
 import time
 import nfc
+import subprocess
 
 
 class nfcThread(threading.Thread):
@@ -19,6 +20,8 @@ class nfcThread(threading.Thread):
             nfc.perror(self.pnd, "nfc_initiator_init")
             print('ERROR: Unable to init NFC device.')
             exit()
+        print('NFC device is initialized')
+        self.state = 0
 
     def run(self):
         while (True):
@@ -41,4 +44,9 @@ class nfcThread(threading.Thread):
             if nt.nti.nai.szAtsLen:
                 print('          ATS (ATR): ', end='')
                 nfc.print_hex(nt.nti.nai.abtAts, nt.nti.nai.szAtsLen)
+            subprocess.call(['/home/pi/power_measurements_skirpts/.sh', self.state])
+            if (self.state == 0):
+                self.state = 1
+            else:
+                self.state = 0
             time.sleep(5)
