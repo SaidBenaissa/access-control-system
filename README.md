@@ -45,7 +45,7 @@ The first command just lists all devices but the second can read your tag via de
 #### nfc-bindings
 We are using `nfc-binding` library as python wrapper for `libnfc`. More information in official [repository](https://github.com/xantares/nfc-bindings). We are using library in this [commit](https://github.com/xantares/nfc-bindings/tree/c3b4ae99201be43258fdfb7f708eed21660faac3). If you are using newer//older version it is up you, but this is tested and works well.
 
-Before installation make sure you have all requirements.Probably you do not have `SWIG`. For more information read next chapter.
+Before installation make sure you have all requirements. Probably you do not have `SWIG`. For more information read [next chapter](https://github.com/psiskova/access-control-system#swig) .
 
 `nfc-bindings` installation is straightforward. Just follow these steps
 ```{r, engine='bash', count_lines}
