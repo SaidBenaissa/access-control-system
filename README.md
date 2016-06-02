@@ -35,7 +35,7 @@ Install `libnfc`
 $ sudo dpkg -i ../libnfc*.deb
 ```
 
-Now plug your NFC device and test it via command (you can find more command typing `nfc-`<kbd>TAB</kbd>)
+Now plug your NFC device and test it via command (you can find more commands typing `nfc-`<kbd>TAB</kbd>)
 ```{r, engine='bash', count_lines}
 $ nfc-list
 $ nfc-poll
