@@ -44,7 +44,7 @@ class nfcThread(threading.Thread):
             if nt.nti.nai.szAtsLen:
                 print('          ATS (ATR): ', end='')
                 nfc.print_hex(nt.nti.nai.abtAts, nt.nti.nai.szAtsLen)
-            subprocess.call(['/home/pi/power_measurements_skirpts/.sh', self.state])
+            subprocess.call(['/home/pi/power_measurements_skirpts/turn_off_on.sh', self.state])
             if (self.state == 0):
                 self.state = 1
             else:
