@@ -11,11 +11,11 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-from scripts.quick_start_example import myThread
+from scripts.quick_start_example import nfcThread
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "accesscontrolsystem.settings")
 
-thread1 = myThread()
-thread1.start()
+nfc = nfcThread()
+nfc.start()
 
 application = get_wsgi_application()
