@@ -6,7 +6,7 @@
         .controller('LoginController', LoginController);
 
     /** @ngInject */
-    function LoginController($auth, $state) {
+    function LoginController($auth, $state, $rootScope) {
         var vm = this;
 
         vm.credentials = {};
@@ -15,6 +15,7 @@
 
         function login() {
             $auth.login(vm.credentials).then(function (data) {
+                $rootScope.user = data.data;
                 $state.go('app.main.pages.dashboard');
             });
         }
