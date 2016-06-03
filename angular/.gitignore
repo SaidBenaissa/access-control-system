@@ -54,3 +54,5 @@ build
 /bower_components
 /.tmp
 /dist
+/gulp/config.json
+/src/app/ngConstants.js

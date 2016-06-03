@@ -7,7 +7,8 @@
 
     angular.module('BlurAdmin.login', [
         'ui.router',
-        'oc.lazyLoad'
+        'oc.lazyLoad',
+        'satellizer'
     ])
         .config(routeConfig);
 
@@ -18,6 +19,8 @@
                 url: '/login',
                 templateUrl: 'app/login/auth.html',
                 title: 'Login',
+                controller: 'LoginController',
+                controllerAs: 'vm',
                 resolve: {
                     deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                         return $ocLazyLoad.load([{
