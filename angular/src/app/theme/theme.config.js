@@ -10,7 +10,7 @@
 
   /** @ngInject */
   function config(baConfigProvider, colorHelper, $locationProvider) {
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
     //baConfigProvider.changeTheme({blur: true});
     //
     //baConfigProvider.changeColors({
