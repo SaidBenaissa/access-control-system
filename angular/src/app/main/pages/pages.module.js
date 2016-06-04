@@ -26,15 +26,14 @@
             icon: 'ion-document',
             subMenu: [{
                 title: 'Sign In',
-                fixedHref: 'auth.html',
-                blank: true
+                stateRef: 'app.login',
             }, {
                 title: 'Sign Up',
                 fixedHref: 'reg.html',
                 blank: true
             }, {
                 title: 'User Profile',
-                stateRef: 'profile'
+                stateRef: 'app.main.pages.profile'
             }, {
                 title: '404 Page',
                 fixedHref: '404.html',

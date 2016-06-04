@@ -11,7 +11,7 @@
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('ui.panels', {
+        .state('app.main.pages.ui.panels', {
           url: '/panels',
           templateUrl: 'app/main/pages/ui/panels/panels.html',
           controller: 'NotificationsPageCtrl',

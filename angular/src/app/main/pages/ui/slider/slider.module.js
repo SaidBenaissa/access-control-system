@@ -11,7 +11,7 @@
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('ui.slider', {
+        .state('app.main.pages.ui.slider', {
           url: '/slider',
           templateUrl: 'app/main/pages/ui/slider/slider.html',
           title: 'Sliders',

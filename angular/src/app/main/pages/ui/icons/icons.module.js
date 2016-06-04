@@ -11,7 +11,7 @@
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('ui.icons', {
+        .state('app.main.pages.ui.icons', {
           url: '/icons',
           templateUrl: 'app/main/pages/ui/icons/icons.html',
           controller: 'IconsPageCtrl',

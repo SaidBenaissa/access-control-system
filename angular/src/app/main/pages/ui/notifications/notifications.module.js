@@ -11,7 +11,7 @@
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('ui.notifications', {
+        .state('app.main.pages.ui.notifications', {
           url: '/notifications',
           templateUrl: 'app/main/pages/ui/notifications/notifications.html',
           controller: 'NotificationsPageCtrl',

@@ -16,7 +16,7 @@
         function login() {
             $auth.login(vm.credentials).then(function (data) {
                 $rootScope.user = data.data;
-                $state.go('app.main.pages.dashboard');
+                $state.go('app.main.pages.dashboard', {}, {reload: true});
             });
         }
     }

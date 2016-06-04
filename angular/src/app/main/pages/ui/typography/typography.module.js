@@ -11,7 +11,7 @@
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('ui.typography', {
+        .state('app.main.pages.ui.typography', {
           url: '/typography',
           templateUrl: 'app/main/pages/ui/typography/typography.html',
           title: 'Typography',

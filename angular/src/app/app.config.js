@@ -9,8 +9,8 @@
         .config(config);
 
     /** @ngInject */
-    function config(baConfigProvider, colorHelper, $locationProvider, $authProvider, apiBase) {
-        
+    function config($locationProvider, $authProvider, apiBase, $logProvider, DEBUG) {
+
         $locationProvider.html5Mode(true);
         //baConfigProvider.changeTheme({blur: true});
         //
@@ -24,6 +24,8 @@
 
         // Set login URL
         $authProvider.loginUrl = apiBase + 'auth/api-token-auth';
+
+        $logProvider.debugEnabled(DEBUG);
 
     }
 })();

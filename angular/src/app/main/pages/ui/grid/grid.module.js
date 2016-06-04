@@ -11,7 +11,7 @@
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('ui.grid', {
+        .state('app.main.pages.ui.grid', {
           url: '/grid',
           templateUrl: 'app/main/pages/ui/grid/grid.html',
           title: 'Grid',

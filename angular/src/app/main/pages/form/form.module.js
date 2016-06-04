@@ -21,7 +21,7 @@
             order: 250,
           },
         })
-        .state('form.inputs', {
+        .state('app.main.pages.form.inputs', {
           url: '/inputs',
           templateUrl: 'app/main/pages/form/inputs/inputs.html',
           title: 'Form Inputs',
@@ -29,7 +29,7 @@
             order: 0,
           },
         })
-        .state('form.layouts', {
+        .state('app.main.pages.form.layouts', {
           url: '/layouts',
           templateUrl: 'app/main/pages/form/layouts/layouts.html',
           title: 'Form Layouts',
@@ -37,8 +37,7 @@
             order: 100,
           },
         })
-        .state('form.wizard',
-        {
+        .state('app.main.pages.form.wizard', {
           url: '/wizard',
           templateUrl: 'app/main/pages/form/wizard/wizard.html',
           controller: 'WizardCtrl',

@@ -11,7 +11,7 @@
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('ui.tabs', {
+        .state('app.main.pages.ui.tabs', {
           url: '/tabs',
           templateUrl: 'app/main/pages/ui/tabs/tabs.html',
           title: 'Tabs & Accordions',

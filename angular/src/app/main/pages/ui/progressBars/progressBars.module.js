@@ -11,7 +11,7 @@
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('ui.progressBars', {
+        .state('app.main.pages.ui.progressBars', {
           url: '/progressBars',
           templateUrl: 'app/main/pages/ui/progressBars/progressBars.html',
           title: 'Progress Bars',

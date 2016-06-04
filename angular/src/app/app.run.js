@@ -9,7 +9,7 @@
         .run(themeRun);
 
     /** @ngInject */
-    function themeRun($rootScope, $state, baSidebarService) {
+    function themeRun($rootScope, $state, baSidebarService, $log) {
 
         $rootScope.$baSidebarService = baSidebarService;
         $rootScope.$on('$routeChangeStart', function (event) {
