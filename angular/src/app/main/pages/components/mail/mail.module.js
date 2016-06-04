@@ -21,13 +21,13 @@
           sidebarMeta: {
             order: 0,
           },
-        }).state('components.mail.label', {
+        }).state('app.main.pages.components.mail.label', {
           url: '/:label',
           templateUrl: 'app/main/pages/components/mail/list/mailList.html',
           title: 'Mail',
           controller: "MailListCtrl",
           controllerAs: "listCtrl"
-        }).state('components.mail.detail', {
+        }).state('app.main.pages.components.mail.detail', {
           url: '/:label/:id',
           templateUrl: 'app/main/pages/components/mail/detail/mailDetail.html',
           title: 'Mail',

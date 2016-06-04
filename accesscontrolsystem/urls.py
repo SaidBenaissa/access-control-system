@@ -18,10 +18,10 @@ from django.views.generic import TemplateView
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh_jwt_token
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='home.html'), name='index'),
     url(r'^api/', include('adminapp.urls', namespace='rest_framework')),
     url(r'^api/auth/api-token-auth', obtain_jwt_token),
     url(r'^api/auth/refresh-token', refresh_jwt_token),
+    url(r'^.*$', TemplateView.as_view(template_name='index.html'), name='index'),
     # url(r'^t/', include('adminapp.urls'))
     # url(r'^api-auth/', include('adminapp.urls', namespace='rest_framework'))
     # url(r'^adminapp/', include('adminapp.urls')),
