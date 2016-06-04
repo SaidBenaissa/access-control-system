@@ -18,9 +18,9 @@
         checkAuthentification();
 
         function checkAuthentification() {
-            if (!$rootScope.user) {
+            /*if (!$rootScope.user) {
                 $state.go('app.login');
-            }
+            }*/
         }
 
     }

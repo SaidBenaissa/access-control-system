@@ -21,14 +21,14 @@
             icon: 'ion-grid',
             order: 300,
           },
-        }).state('tables.basic', {
+        }).state('app.main.pages.tables.basic', {
           url: '/basic',
           templateUrl: 'app/main/pages/tables/basic/tables.html',
           title: 'Basic Tables',
           sidebarMeta: {
             order: 0,
           },
-        }).state('tables.smart', {
+        }).state('app.main.pages.tables.smart', {
           url: '/smart',
           templateUrl: 'app/main/pages/tables/smart/tables.html',
           title: 'Smart Tables',
