@@ -46,6 +46,22 @@ class MyUser(AbstractBaseUser):
         return self.is_admin
 
 
-class Note(models.Model):
+class Socket(models.Model):
     id = models.AutoField(primary_key=True)
-    text = models.CharField(max_length=200)
+    socket_id = models.CharField(max_length=100)
+    name = models.CharField(max_length=256)
+    color = models.IntegerField(default=1)
+
+
+class Card(models.Model):
+    id = models.AutoField(primary_key=True)
+    chip_id = models.CharField(max_length=100)
+    is_active = models.BooleanField(default=True)
+    user_id = models.ForeignKey(MyUser)
+
+
+class Permissions():
+    id = models.AutoField(primary_key=True)
+    user_id = models.ForeignKey(MyUser)
+    socket_id = models.ForeignKey(Socket)
+    has_permission = models.BooleanField(default=True)
