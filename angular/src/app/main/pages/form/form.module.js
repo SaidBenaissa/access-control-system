@@ -33,6 +33,8 @@
           url: '/layouts',
           templateUrl: 'app/main/pages/form/layouts/layouts.html',
           title: 'Form Layouts',
+          controller: 'FormLayoutsController',
+          controllerAs: 'vm',
           sidebarMeta: {
             order: 100,
           },
