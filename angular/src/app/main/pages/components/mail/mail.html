@@ -9,7 +9,7 @@
             </button>
           </div>
           <div ng-repeat="t in tabCtrl.tabs" ui-sref-active="active" class="mail-navigation"
-               ui-sref="components.mail.label({label: t.label})" ng-click="selectTab(t.label)">
+               ui-sref="app.main.pages.components.mail.label({label: t.label})" ng-click="selectTab(t.label)">
             {{t.name}}<span class="new-mails" ng-show="t.newMails">{{t.newMails}}</span>
           </div>
           <div class="labels">

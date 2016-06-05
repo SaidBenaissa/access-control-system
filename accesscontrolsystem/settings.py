@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'ws4redis',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -139,17 +138,3 @@ JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
     'JWT_ALLOW_REFRESH': True
 }
-
-WS4REDIS_CONNECTION = {
-    'host': 'localhost',
-    'port': 6379,
-    'db': 1,
-    'password': '',
-}
-
-WSGI_APPLICATION = 'ws4redis.django_runserver.application'
-
-WEBSOCKET_URL = '/ws/'
-
-SESSION_ENGINE = 'redis_sessions.session'
-SESSION_REDIS_PREFIX = 'session'
