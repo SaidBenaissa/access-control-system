@@ -2,11 +2,19 @@
   "dev": {
     "apiBase": "http://localhost:8000/api/",
     "ENV": "dev",
-    "DEBUG": true
-    },
+    "DEBUG": true,
+    "WEBSOCKET": {
+      "HOST": "ws://localhost",
+      "PORT": 5000
+    }
+  },
   "prod": {
     "apiBase": "",
     "ENV": "prod",
-    "DEBUG": false
+    "DEBUG": false,
+    "WEBSOCKET": {
+      "HOST": "ws://localhost",
+      "PORT": 5000
+    }
   }
 }

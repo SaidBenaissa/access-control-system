@@ -9,7 +9,7 @@
         .run(themeRun);
 
     /** @ngInject */
-    function themeRun($rootScope, $state, baSidebarService, $websocket, $log) {
+    function themeRun($rootScope, $state, baSidebarService, $websocket, $log, WEBSOCKET) {
 
         $rootScope.$baSidebarService = baSidebarService;
         $rootScope.$on('$routeChangeStart', function (event) {
@@ -17,7 +17,7 @@
         });
         checkAuthentification();
 
-        var dataStream = $websocket('ws://localhost:5000');
+        var dataStream = $websocket(WEBSOCKET.HOST + ':' + WEBSOCKET.PORT);
         dataStream.send(JSON.stringify({action: 'get'}));
 
         dataStream.onMessage(function (message) {

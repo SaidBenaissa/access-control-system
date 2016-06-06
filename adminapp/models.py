@@ -1,5 +1,4 @@
 from django.db import models
-
 from djwebsockets.decorator import Namespace
 from djwebsockets.websocket import BaseWSClass
 
@@ -71,7 +70,7 @@ class Permissions():
 
 
 @Namespace("/")
-class ExamplerHandler(BaseWSClass):
+class WebSocketHandler(BaseWSClass):
     @classmethod
     def on_connect(cls, websocket, path):
         print("uto", websocket, path)
