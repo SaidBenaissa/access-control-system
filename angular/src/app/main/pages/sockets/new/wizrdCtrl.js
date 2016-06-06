@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.main.pages.sockets.new')
+  angular.module('AccessControlSystem.main.pages.sockets.new')
       .controller('WizardCtrl', WizardCtrl);
 
   /** @ngInject */

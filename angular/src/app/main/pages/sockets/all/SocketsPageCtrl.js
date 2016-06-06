@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin.main.pages.tables')
+    angular.module('AccessControlSystem.main.pages.tables')
         .controller('SocketsPageCtrl', SocketsPageCtrl);
 
     /** @ngInject */

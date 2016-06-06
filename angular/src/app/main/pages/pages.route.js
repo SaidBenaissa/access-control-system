@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('BlurAdmin.main')
+        .module('AccessControlSystem.main')
         .config(routeConfig);
 
     /** @ngInject */

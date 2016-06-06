@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.main.pages.components.timeline', [])
+  angular.module('AccessControlSystem.main.pages.components.timeline', [])
     .config(routeConfig);
 
   /** @ngInject */

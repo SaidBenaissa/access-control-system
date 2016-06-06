@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.main.pages.components.mail')
+  angular.module('AccessControlSystem.main.pages.components.mail')
     .controller('MailDetailCtrl', MailDetailCtrl);
 
   /** @ngInject */

@@ -5,11 +5,11 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin')
+    angular.module('AccessControlSystem')
         .config(config);
 
     /** @ngInject */
-    function config($locationProvider, $authProvider, apiBase, $logProvider, DEBUG) {
+    function config($locationProvider, $authProvider, apiBase, $logProvider, $urlRouterProvider, DEBUG) {
 
         $locationProvider.html5Mode(true);
         //baConfigProvider.changeTheme({blur: true});
@@ -27,5 +27,6 @@
 
         $logProvider.debugEnabled(DEBUG);
 
+        $urlRouterProvider.otherwise('/dashboard');
     }
 })();

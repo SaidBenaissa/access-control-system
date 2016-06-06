@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.main.pages.profile')
+  angular.module('AccessControlSystem.main.pages.profile')
     .controller('ProfileModalCtrl', ProfileModalCtrl);
 
   /** @ngInject */

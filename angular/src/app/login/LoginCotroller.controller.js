@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('BlurAdmin.login')
+        .module('AccessControlSystem.login')
         .controller('LoginController', LoginController);
 
     /** @ngInject */

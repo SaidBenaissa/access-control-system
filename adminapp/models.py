@@ -1,5 +1,8 @@
 from django.db import models
 
+from djwebsockets.decorator import Namespace
+from djwebsockets.websocket import BaseWSClass
+
 from django.contrib.auth.models import (
     AbstractBaseUser
 )
@@ -65,3 +68,19 @@ class Permissions():
     user_id = models.ForeignKey(MyUser)
     socket_id = models.ForeignKey(Socket)
     has_permission = models.BooleanField(default=True)
+
+
+@Namespace("/")
+class ExamplerHandler(BaseWSClass):
+    @classmethod
+    def on_connect(cls, websocket, path):
+        print("uto", websocket, path)
+
+    @classmethod
+    def on_message(cls, websocket, message):
+        print(cls, websocket, message)
+        websocket.send('aa')
+
+    @classmethod
+    def on_close(cls, websocket):
+        ...

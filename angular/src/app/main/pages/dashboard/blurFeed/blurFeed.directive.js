@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.main.pages.dashboard')
+  angular.module('AccessControlSystem.main.pages.dashboard')
       .directive('blurFeed', blurFeed);
 
   /** @ngInject */

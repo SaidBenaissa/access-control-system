@@ -5,9 +5,9 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin.main.pages.users', [
-        'BlurAdmin.main.pages.users.new',
-        'BlurAdmin.main.pages.users.all',
+    angular.module('AccessControlSystem.main.pages.users', [
+        'AccessControlSystem.main.pages.users.new',
+        'AccessControlSystem.main.pages.users.all',
     ])
 
 })();

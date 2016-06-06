@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('BlurAdmin.main.pages.form')
+        .module('AccessControlSystem.main.pages.form')
         .controller('FormLayoutsController', FormLayoutsController);
 
     /** @ngInject */

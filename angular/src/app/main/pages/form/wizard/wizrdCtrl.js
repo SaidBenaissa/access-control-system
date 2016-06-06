@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.main.pages.form')
+  angular.module('AccessControlSystem.main.pages.form')
       .controller('WizardCtrl', WizardCtrl);
 
   /** @ngInject */

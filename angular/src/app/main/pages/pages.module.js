@@ -5,19 +5,19 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin.main.pages', [
+    angular.module('AccessControlSystem.main.pages', [
         'ui.router',
 
-        'BlurAdmin.main.pages.dashboard',
-        'BlurAdmin.main.pages.ui',
-        'BlurAdmin.main.pages.components',
-        'BlurAdmin.main.pages.form',
-        'BlurAdmin.main.pages.tables',
-        'BlurAdmin.main.pages.charts',
-        'BlurAdmin.main.pages.maps',
-        'BlurAdmin.main.pages.profile',
-        'BlurAdmin.main.pages.users',
-        'BlurAdmin.main.pages.sockets',
+        'AccessControlSystem.main.pages.dashboard',
+        'AccessControlSystem.main.pages.ui',
+        'AccessControlSystem.main.pages.components',
+        'AccessControlSystem.main.pages.form',
+        'AccessControlSystem.main.pages.tables',
+        'AccessControlSystem.main.pages.charts',
+        'AccessControlSystem.main.pages.maps',
+        'AccessControlSystem.main.pages.profile',
+        'AccessControlSystem.main.pages.users',
+        'AccessControlSystem.main.pages.sockets',
     ])
         .config(routeConfig);
 

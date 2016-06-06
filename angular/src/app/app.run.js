@@ -5,11 +5,11 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin')
+    angular.module('AccessControlSystem')
         .run(themeRun);
 
     /** @ngInject */
-    function themeRun($rootScope, $state, baSidebarService, $log) {
+    function themeRun($rootScope, $state, baSidebarService, $websocket, $log) {
 
         $rootScope.$baSidebarService = baSidebarService;
         $rootScope.$on('$routeChangeStart', function (event) {
@@ -17,10 +17,18 @@
         });
         checkAuthentification();
 
+        var dataStream = $websocket('ws://localhost:5000');
+        dataStream.send(JSON.stringify({action: 'get'}));
+
+        dataStream.onMessage(function (message) {
+            $log.debug(message);
+        });
+
+
         function checkAuthentification() {
             /*if (!$rootScope.user) {
-                $state.go('app.login');
-            }*/
+             $state.go('app.login');
+             }*/
         }
 
     }

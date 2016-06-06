@@ -16,7 +16,7 @@ gulp.task('constants', function () {
     template: "(function() {" +
     "          'use strict';" +
     "          angular" +
-    "              .module('BlurAdmin')" +
+    "              .module('AccessControlSystem')" +
     '<% constants.forEach(function(constant) { %>' +
     '.constant("<%- constant.name %>", <%= constant.value %>)\n' +
     '<% }) %>' +

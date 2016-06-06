@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.main.pages.ui.progressBars', [])
+  angular.module('AccessControlSystem.main.pages.ui.progressBars', [])
       .config(routeConfig);
 
   /** @ngInject */

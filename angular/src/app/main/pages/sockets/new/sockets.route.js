@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin.main.pages.sockets.new')
+    angular.module('AccessControlSystem.main.pages.sockets.new')
         .config(routeConfig);
 
     /** @ngInject */

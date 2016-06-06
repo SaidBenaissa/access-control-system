@@ -1,20 +1,21 @@
 'use strict';
 
-angular.module('BlurAdmin', [
-  'ngAnimate',
-  'ui.bootstrap',
-  'ui.sortable',
-  'ui.router',
-  'ngTouch',
-  'toastr',
-  'smart-table',
-  "xeditable",
-  'ui.slimscroll',
-  'ngJsTree',
-  'angular-progress-button-styles',
-  'satellizer',
+angular.module('AccessControlSystem', [
+    'ngAnimate',
+    'ui.bootstrap',
+    'ui.sortable',
+    'ui.router',
+    'ngTouch',
+    'ngWebSocket',
+    'toastr',
+    'smart-table',
+    "xeditable",
+    'ui.slimscroll',
+    'ngJsTree',
+    'angular-progress-button-styles',
+    'satellizer',
 
-  'BlurAdmin.theme',
-  'BlurAdmin.main',
-  'BlurAdmin.login',
+    'AccessControlSystem.theme',
+    'AccessControlSystem.main',
+    'AccessControlSystem.login',
 ]);

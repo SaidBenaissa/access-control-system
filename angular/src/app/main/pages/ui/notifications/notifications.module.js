@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.main.pages.ui.notifications', [])
+  angular.module('AccessControlSystem.main.pages.ui.notifications', [])
       .config(routeConfig);
 
   /** @ngInject */

@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('BlurAdmin.main', [
-            'BlurAdmin.main.pages'
+        .module('AccessControlSystem.main', [
+            'AccessControlSystem.main.pages'
         ])
 
 })();

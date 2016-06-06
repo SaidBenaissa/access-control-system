@@ -2,19 +2,16 @@
     'use strict';
 
     angular
-        .module('BlurAdmin')
+        .module('AccessControlSystem')
         .config(routeConfig);
 
     /** @ngInject */
-    function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+    function routeConfig($stateProvider) {
         $stateProvider.state('app', {
             abstract: true,
             url: '',
-            template: '<div ui-view></div>'
+            template: '<ui-view></ui-view>',
         });
-
-        $urlRouterProvider.otherwise('/');
-        $locationProvider.html5Mode(true);
     }
 
 })();

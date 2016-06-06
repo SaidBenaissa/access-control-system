@@ -5,9 +5,9 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin.main.pages.sockets', [
-        'BlurAdmin.main.pages.sockets.new',
-        'BlurAdmin.main.pages.sockets.all',
+    angular.module('AccessControlSystem.main.pages.sockets', [
+        'AccessControlSystem.main.pages.sockets.new',
+        'AccessControlSystem.main.pages.sockets.all',
     ])
 
 })();

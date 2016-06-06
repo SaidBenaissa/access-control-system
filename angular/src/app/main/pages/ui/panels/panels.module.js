@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.main.pages.ui.panels', [])
+  angular.module('AccessControlSystem.main.pages.ui.panels', [])
       .config(routeConfig);
 
   /** @ngInject */

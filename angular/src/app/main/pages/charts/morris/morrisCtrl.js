@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.main.pages.charts.morris')
+  angular.module('AccessControlSystem.main.pages.charts.morris')
     .controller('morrisCtrl', morrisCtrl);
 
   /** @ngInject */

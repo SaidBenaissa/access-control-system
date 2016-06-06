@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('BlurAdmin.theme.components')
+  angular.module('AccessControlSystem.theme.components')
     .directive('baWizardStep', baWizardStep);
 
   /** @ngInject */

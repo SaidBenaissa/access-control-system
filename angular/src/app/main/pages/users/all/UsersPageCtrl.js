@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin.main.pages.users.all')
+    angular.module('AccessControlSystem.main.pages.users.all')
         .controller('UsersPageCtrl', UsersPageCtrl);
 
     /** @ngInject */

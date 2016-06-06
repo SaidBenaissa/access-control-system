@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.main.pages.charts.morris', [])
+  angular.module('AccessControlSystem.main.pages.charts.morris', [])
     .config(routeConfig).config(function(baConfigProvider){
       var layoutColors = baConfigProvider.colors;
       Morris.Donut.prototype.defaults.backgroundColor = 'transparent';
