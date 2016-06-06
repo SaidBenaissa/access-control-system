@@ -40,7 +40,7 @@ class nfcThread(threading.Thread):
             if nt.nti.nai.abtUid[0] == 8:
                 id = 3
             print('       UID (NFCID%d): ' % id, end='')
-            sendMessage(id)
+            sendMessage(format(nt.nti.nai.abtUid, '02x'), format(nt.nti.nai.szUidLen, '02x'))
             nfc.print_hex(nt.nti.nai.abtUid, nt.nti.nai.szUidLen)
             print('      SAK (SEL_RES): ', end='')
             print(nt.nti.nai.btSak)
