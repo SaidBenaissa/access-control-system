@@ -6,6 +6,8 @@ import time
 import nfc
 import subprocess
 
+from adminapp.models import WebSocketHandler
+
 
 class nfcThread(threading.Thread):
     def __init__(self):
@@ -38,6 +40,7 @@ class nfcThread(threading.Thread):
             if nt.nti.nai.abtUid[0] == 8:
                 id = 3
             print('       UID (NFCID%d): ' % id, end='')
+            WebSocketHandler.sendMessage(id)
             nfc.print_hex(nt.nti.nai.abtUid, nt.nti.nai.szUidLen)
             print('      SAK (SEL_RES): ', end='')
             print(nt.nti.nai.btSak)

@@ -69,17 +69,25 @@ class Permissions():
     has_permission = models.BooleanField(default=True)
 
 
+connections = []
+
+
 @Namespace("/")
 class WebSocketHandler(BaseWSClass):
     @classmethod
     def on_connect(cls, websocket, path):
-        print("uto", websocket, path)
+        connections.append(websocket)
 
     @classmethod
     def on_message(cls, websocket, message):
-        print(cls, websocket, message)
+        # print(cls, websocket, message)
         websocket.send('aa')
 
     @classmethod
     def on_close(cls, websocket):
-        ...
+        connections.remove(websocket)
+
+    @staticmethod
+    def sendMessage(self, message):
+        for connection in connections:
+            connection.send(message)
