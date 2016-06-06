@@ -14,45 +14,6 @@ void print_zway_terminated(ZWay zway, void *arg) {
     zway_log(zway, Information, ZSTR("Z-Way terminated"));
 }
 
-ZDataChangeCallback dataChangeCallback(ZWay zway, ZWDataChangeType aType, ZDataHolder aData, void *apArg) {
-    //ZWCSTR a = zdata_get_path(aData);
-    int str_val;
-    zdata_get_integer(aData, &str_val);
-    printf("callback %d \n", str_val);
-    //printf("callback1 %s \n", a);
-}
-
-ZWBOOL get_vendor_string(ZWay zway, int dev) {
-    int str_val;
-    zdata_acquire_lock(ZDataRoot(zway));
-    ZDataHolder cc_data = zway_find_device_instance_cc_data(zway, dev, 0, 61, "61.val");
-    zdata_get_integer(cc_data, &str_val);
-    printf("farba %d", str_val);
-    //zdata_add_callback(cc_data, dataChangeCallback, TRUE, NULL);
-    //PrintSubtree(zway, cc_data, 0);
-    zdata_release_lock(ZDataRoot(zway));
-
-    return str_val;
-
-}
-
-void PrintSubtree(ZWay zway, ZDataHolder parent, int indent) {
-    // print indented name
-    int i = 0;
-    for (i = 0; i < indent; i++)
-        printf("  ");
-    printf("%s ", zdata_get_name(parent));
-    ZWDataType type;
-    zdata_get_type(parent, &type);
-    printf("%d \n", type);
-
-    ZDataIterator child = zdata_first_child(parent);
-    while (child != NULL) {
-        PrintSubtree(zway, child->data, indent + 1);
-        child = zdata_next_child(child);
-    }
-}
-
 int reset_default_coloring(ZWay zway) {
     ZWCSTR vendor = "Fibar Group";
     ZWDevicesList list = zway_devices_list(zway);
@@ -65,7 +26,6 @@ int reset_default_coloring(ZWay zway) {
 //printf("%i",zway_cc_manufacturer_specific_device_id_get(zway, list[i],0,0, NULL, NULL, NULL));
 
             zway_cc_switch_binary_set(zway, list[i], 0, arg, NULL, NULL, NULL);
-            get_vendor_string(zway, list[i]);
 //		zway_cc_configuration_set(zway, list[i], 0, 0x34, 6, 0x01, NULL, NULL, NULL); //coloring
             //printf("get %d ", zway_cc_configuration_get(zway, list[i], 0, 0x3D, NULL, NULL, NULL)); //coloring
             //ZWay zway, ZWBYTE node_id, ZWBYTE instance_id, ZWBYTE parameter, int value, ZWBYTE size, ZJobCustomCallback successCallback, ZJobCustomCallback failureCallback, void* callbackArg);
@@ -110,6 +70,8 @@ int do_work(ZWay zway) {
 }
 
 int main(int argc, const char *argv[]) {
+
+	ZWLog logger = zlog_create(stdout, Silent);
 
     if (argc == 2) {
         arg = atoi(argv[1]);
