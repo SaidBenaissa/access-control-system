@@ -28,13 +28,16 @@ class nfcThread(threading.Thread):
         self.state = 0
 
     def run(self):
-        process = subprocess.Popen("/home/pi/Desktop/quick_start_example1", stdout=subprocess.PIPE)
-        for c in iter(lambda: process.stdout.read(1), ''):
-            sys.stdout.write(c)
+        p = subprocess.Popen("/home/pi/Desktop/quick_start_example1", stdout=subprocess.PIPE)
+        # Grab stdout line by line as it becomes available.  This will loop until
+        # p terminates.
+        while p.poll() is None:
+            l = p.stdout.readline()  # This blocks until it receives a newline.
+            print(l)
+            sendMessage(l)
         subprocess.call(['/home/pi/power_measurements_skirpts/turn_off_on.sh', str(self.state)])
-        sendMessage(c)
         #nmMifare = nfc.modulation()
-        #nmMifare.nmt = nfc.NMT_ISO14443A
+        #nmMifare.nmt = nfc.    NMT_ISO14443A
         #nmMifare.nbr = nfc.NBR_106
 #
         #nt = nfc.target()
