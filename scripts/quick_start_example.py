@@ -26,12 +26,12 @@ class nfcThread(threading.Thread):
         self.state = 0
 
     def run(self):
-        while (True):
-            nmMifare = nfc.modulation()
-            nmMifare.nmt = nfc.NMT_ISO14443A
-            nmMifare.nbr = nfc.NBR_106
+        nmMifare = nfc.modulation()
+        nmMifare.nmt = nfc.NMT_ISO14443A
+        nmMifare.nbr = nfc.NBR_106
 
-            nt = nfc.target()
+        nt = nfc.target()
+        while (True):
             ret = nfc.initiator_select_passive_target(self.pnd, nmMifare, 0, 0, nt)
             print('The following (NFC) ISO14443A tag was found:')
             print('    ATQA (SENS_RES): ', end='')
@@ -53,4 +53,4 @@ class nfcThread(threading.Thread):
                 self.state = 1
             else:
                 self.state = 0
-            time.sleep(5)
+            time.sleep(3)
