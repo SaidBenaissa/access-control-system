@@ -6,7 +6,7 @@ import time
 import nfc
 import subprocess
 
-from adminapp.models import sendMessage
+#from adminapp.models import sendMessage
 
 
 class nfcThread(threading.Thread):
@@ -41,7 +41,7 @@ class nfcThread(threading.Thread):
                 id = 3
             print('       UID (NFCID%d): ' % id, end='')
             print(''.join(format(x, '02x') for x in nt.nti.nai.abtUid))
-            sendMessage(''.join(format(x, '02x') for x in nt.nti.nai.abtUid))
+            #sendMessage(''.join(format(x, '02x') for x in nt.nti.nai.abtUid))
             nfc.print_hex(nt.nti.nai.abtUid, nt.nti.nai.szUidLen)
             print('      SAK (SEL_RES): ', end='')
             print(nt.nti.nai.btSak)

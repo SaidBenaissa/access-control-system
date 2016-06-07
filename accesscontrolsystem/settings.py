@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'djwebsockets',
+    #'djwebsockets',
     'adminapp'
 ]
 
@@ -141,5 +141,5 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True
 }
 
-WEBSOCKET_HOST = 'localhost'
-WEBSOCKET_PORT = 5000
+#WEBSOCKET_HOST = 'localhost'
+#WEBSOCKET_PORT = 5000
