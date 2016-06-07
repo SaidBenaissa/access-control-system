@@ -18,4 +18,5 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "accesscontrolsystem.settings")
 application = get_wsgi_application()
 
 nfc = nfcThread()
+nfc.daemon = True
 nfc.start()
