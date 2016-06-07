@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
 
 import os
 
-from django.core.wsgi import get_wsgi_application
+from djwebsockets.wsgi import get_wsgi_application
 
 from scripts.quick_start_example import nfcThread
 

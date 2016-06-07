@@ -1,6 +1,6 @@
 from django.db import models
-#from djwebsockets.decorator import Namespace
-#from djwebsockets.websocket import BaseWSClass
+from djwebsockets.decorator import Namespace
+from djwebsockets.websocket import BaseWSClass
 
 from django.contrib.auth.models import (
     AbstractBaseUser
@@ -72,22 +72,22 @@ class Permissions():
 connections = []
 
 
-#@Namespace("/")
-#class WebSocketHandler(BaseWSClass):
-#    @classmethod
-#    def on_connect(cls, websocket, path):
-#        connections.append(websocket)
-#
-#    @classmethod
-#    def on_message(cls, websocket, message):
-#        # print(cls, websocket, message)
-#        websocket.send('aa')
-#
-#    @classmethod
-#    def on_close(cls, websocket):
-#        connections.remove(websocket)
-#
-#
-#def sendMessage(message):
-#    for connection in connections:
-#        connection.send(message)
+@Namespace("/")
+class WebSocketHandler(BaseWSClass):
+    @classmethod
+    def on_connect(cls, websocket, path):
+        connections.append(websocket)
+
+    @classmethod
+    def on_message(cls, websocket, message):
+        # print(cls, websocket, message)
+        websocket.send('aa')
+
+    @classmethod
+    def on_close(cls, websocket):
+        connections.remove(websocket)
+
+
+def sendMessage(message):
+    for connection in connections:
+        connection.send(message)
