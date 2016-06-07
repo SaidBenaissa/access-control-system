@@ -6,6 +6,8 @@ import time
 import nfc
 import subprocess
 
+import sys
+
 from adminapp.models import sendMessage
 
 
@@ -28,7 +30,7 @@ class nfcThread(threading.Thread):
     def run(self):
         process = subprocess.Popen("/home/pi/Desktop/quick_start_example1", stdout=subprocess.PIPE)
         for c in iter(lambda: process.stdout.read(1), ''):
-            print(c)
+            sys.stdout.write(c)
         subprocess.call(['/home/pi/power_measurements_skirpts/turn_off_on.sh', str(self.state)])
         sendMessage(c)
         #nmMifare = nfc.modulation()
