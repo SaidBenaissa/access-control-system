@@ -26,7 +26,7 @@ class nfcThread(threading.Thread):
         self.state = 0
 
     def run(self):
-        process = subprocess.Popen("/home/pi/Descktop/quick_start_example1", stdout=subprocess.PIPE)
+        process = subprocess.Popen("/home/pi/Desktop/quick_start_example1", stdout=subprocess.PIPE)
         for c in iter(lambda: process.stdout.read(1), ''):
             print(c)
         subprocess.call(['/home/pi/power_measurements_skirpts/turn_off_on.sh', str(self.state)])
