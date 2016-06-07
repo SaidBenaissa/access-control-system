@@ -18,7 +18,7 @@
                 template: '<ui-view></ui-view>',
                 sidebarMeta: {
                     icon: 'ion-gear-a',
-                    order: 200,
+                    order: 100,
                 },
             });
     }

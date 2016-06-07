@@ -1,21 +1,31 @@
 (function () {
-  'use strict';
+    'use strict';
 
-  angular.module('AccessControlSystem.main.pages.users.new')
-      .controller('WizardCtrl', WizardCtrl);
+    angular.module('AccessControlSystem.main.pages.users.new')
+        .controller('WizardCtrl1', WizardCtrl1);
 
-  /** @ngInject */
-  function WizardCtrl($scope) {
-   var vm = this;
+    /** @ngInject */
+    function WizardCtrl1($scope, $log, $http, apiBase) {
+        var vm = this;
 
-    vm.personalInfo = {};
-    vm.productInfo = {};
-    vm.shipment = {};
+        vm.personalInfo = {};
+        vm.productInfo = {};
 
-    vm.arePersonalInfoPasswordsEqual = function () {
-      return vm.personalInfo.confirmPassword && vm.personalInfo.password == vm.personalInfo.confirmPassword;
-    };
-  }
+        vm.save = function () {
+            console.log('som v callbacku');
+            $http({
+                url: apiBase + 'barsco',
+                method: "POST",
+                data: {
+                    personalInfo: vm.personalInfo,
+                    productInfo: vm.productInfo
+                }
+            }).then(function (data) {
+                $log.debug(data);
+            })
+        }
+
+    }
 
 })();
 

@@ -15,7 +15,7 @@
                 url: '/new',
                 templateUrl: 'app/main/pages/users/new/wizard.html',
                 title: 'Add New User',
-                controller: 'WizardCtrl',
+                controller: 'WizardCtrl1',
                 controllerAs: 'vm',
                 sidebarMeta: {
                     icon: 'ion-gear-a',
