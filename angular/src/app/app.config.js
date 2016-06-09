@@ -23,7 +23,7 @@
         //});
 
         // Set login URL
-        $authProvider.loginUrl = apiBase + 'auth/api-token-auth';
+        $authProvider.loginUrl = apiBase + 'auth/login';
 
         $logProvider.debugEnabled(DEBUG);
 

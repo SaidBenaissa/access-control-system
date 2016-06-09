@@ -9,22 +9,14 @@
         .run(themeRun);
 
     /** @ngInject */
-    function themeRun($rootScope, $state, baSidebarService, $websocket, $log, WEBSOCKET) {
+    function themeRun($rootScope, baSidebarService, $http) {
 
         $rootScope.$baSidebarService = baSidebarService;
         $rootScope.$on('$routeChangeStart', function (event) {
             checkAuthentification();
         });
         checkAuthentification();
-
-        var dataStream = $websocket(WEBSOCKET.HOST + ':' + WEBSOCKET.PORT);
-        dataStream.send(JSON.stringify({action: 'get'}));
-
-        dataStream.onMessage(function (message) {
-            $log.debug(message);
-        });
-
-
+        
         function checkAuthentification() {
             /*if (!$rootScope.user) {
              $state.go('app.login');

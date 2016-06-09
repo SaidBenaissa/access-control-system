@@ -1,6 +1,6 @@
 {
   "dev": {
-    "apiBase": "http://localhost:8000/api/",
+    "apiBase": "http://localhost:8080/api/",
     "ENV": "dev",
     "DEBUG": true,
     "WEBSOCKET": {
