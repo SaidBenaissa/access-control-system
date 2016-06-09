@@ -10,7 +10,7 @@ $ aptitude search boost
 ```
 and compile with
 ```{r, engine='bash', count_lines}
-$ g++ -L/usr/incluce/boost/ -lboost_system -pthread -o boostserver boostserver.cpp -std=c++11
+$ g++ -lboost_system -pthread -o boostserver boostserver.cpp -std=c++11
 ```
 Test with
 ```{r, engine='bash', count_lines}
@@ -64,7 +64,7 @@ Check running procceses with
 ```{r, engine='bash', count_lines}
 $ sudo netstat -lptu
 ```
-and then just with
+and then just kill it with
 ```{r, engine='bash', count_lines}
 $ kill PID
 ```

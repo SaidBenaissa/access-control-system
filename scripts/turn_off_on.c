@@ -5,6 +5,7 @@
 #include <unistd.h>
 
 int arg = 0;
+int device = 0;
 
 void reset_zway(ZWay zway) {
     zway_controller_set_default(zway);
@@ -20,17 +21,17 @@ int reset_default_coloring(ZWay zway) {
     if (list != NULL) {
         int i = 0;
         while (list[i]) {
+            if (!device || i == device) {
+                zway_cc_switch_binary_set(zway, list[i], 0, arg, NULL, NULL, NULL);
+            }
             i++;
             //zway_log(zway, Debug, "strcmp: %i", strcmp(get_vendor_string(zway, list[i]), vendor));
             //if(strcmp(get_vendor_string(zway, list[i]), vendor) == 0){
 //printf("%i",zway_cc_manufacturer_specific_device_id_get(zway, list[i],0,0, NULL, NULL, NULL));
-
-            zway_cc_switch_binary_set(zway, list[i], 0, arg, NULL, NULL, NULL);
 //		zway_cc_configuration_set(zway, list[i], 0, 0x34, 6, 0x01, NULL, NULL, NULL); //coloring
             //printf("get %d ", zway_cc_configuration_get(zway, list[i], 0, 0x3D, NULL, NULL, NULL)); //coloring
             //ZWay zway, ZWBYTE node_id, ZWBYTE instance_id, ZWBYTE parameter, int value, ZWBYTE size, ZJobCustomCallback successCallback, ZJobCustomCallback failureCallback, void* callbackArg);
             //}
-            i++;
         }
     }
     zway_devices_list_free(list);
@@ -71,10 +72,13 @@ int do_work(ZWay zway) {
 
 int main(int argc, const char *argv[]) {
 
-	ZWLog logger = zlog_create(stdout, Silent);
+    ZWLog logger = zlog_create(stdout, Silent);
 
-    if (argc == 2) {
+    if (argc >= 2) {
         arg = atoi(argv[1]);
+    }
+    if (argc == 3) {
+        device = atoi(argv[2]);
     }
     ZWay zway = NULL;
 #ifdef _WINDOWS
