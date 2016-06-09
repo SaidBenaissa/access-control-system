@@ -17,6 +17,17 @@ Test with
 $ ./boostserver
 ```
 
+### Boost library with libnfc (still experimental)
+For installation use
+```{r, engine='bash', count_lines}
+$ g++ -L/opt/z-way-server/libs -I/opt/z-way-server/libzway -lzway -lzcommons -lboost_system -lxml2 -lz -lm -lcrypto -larchive -pthread -o boostserver boostserver.cpp turn_off_on.c -std=c++11
+```
+Test with
+```{r, engine='bash', count_lines}
+$ ./boostserver
+```
+
+
 ### touchatag reader
 For touchatag reader you need to have this library `libnfc`.
 #### libnfc
