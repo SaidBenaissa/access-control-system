@@ -1,8 +1,24 @@
 # access-control-system
 
 ## Installation
+### Boost library (experimental)
+For installation use
+```{r, engine='bash', count_lines}
+$ sudo apt-get install libboost-all-dev
+$ sudo apt-get install aptitude
+$ aptitude search boost
+```
+and compile with
+```{r, engine='bash', count_lines}
+$ g++ -L/usr/incluce/boost/ -lboost_system -pthread -o boostserver boostserver.cpp -std=c++11
+```
+Test with
+```{r, engine='bash', count_lines}
+$ ./boostserver
+```
+
 ### touchatag reader
-For touchatag reader you need to have these two libraries `libnfc` and `nfc-bindings`.
+For touchatag reader you need to have this library `libnfc`.
 #### libnfc
 We are using `libnfc` in version 1.7.1. For installation just follow these steps. For more information just check out their [page](http://nfc-tools.org/).
 
@@ -42,33 +58,13 @@ $ nfc-poll
 ```
 The first command just lists all devices but the second can read your tag via device.
 
-#### nfc-bindings
-We are using `nfc-binding` library as python wrapper for `libnfc`. More information in official [repository](https://github.com/xantares/nfc-bindings). We are using library in this [commit](https://github.com/xantares/nfc-bindings/tree/c3b4ae99201be43258fdfb7f708eed21660faac3). If you are using newer//older version it is up you, but this is tested and works well.
-
-Before installation make sure you have all requirements. Probably you do not have `SWIG`. For more information read [next chapter](https://github.com/psiskova/access-control-system#swig) .
-
-`nfc-bindings` installation is straightforward. Just follow these steps
+## Problems
+#### Port is in use
+Check running procceses with
 ```{r, engine='bash', count_lines}
-$ git clone https://github.com/xantares/nfc-bindings.git
-$ cd nfc-bindings
-$ cmake -DCMAKE_INSTALL_PREFIX=~/.local . # in this step you probably NEED to specify python version e.g. -DPYTHON_EXECUTABLE=/usr/bin/python3
-$ make install
+$ sudo netstat -lptu
 ```
-
-Now try
+and then just with
 ```{r, engine='bash', count_lines}
-$ python3 python/examples/quick_start_example.py
-```
-
-If you are getting error [do not panic](http://flamesnation.ca/uploads/Image/don't_panic.jpg)! Try to follow [this issue](https://github.com/xantares/nfc-bindings/issues/7). Does not work? Panic!
-
-#### SWIG
-We are using [`SWIG`](http://swig.org/) in version 3.0.9 and works well. For installation just follow.
-```{r, engine='bash', count_lines}
-$ git clone https://github.com/swig/swig.git
-$ cd swig
-$ ./autogen.sh
-$ ./configure
-$ make
-$ make install
+$ kill PID
 ```
