@@ -1,8 +1,0 @@
-django==1.9.6
-djangorestframework-jwt==1.8.0
-djangorestframework==3.3.3
-markdown==2.6.6
-django-filter==0.13.0
-django-cors-headers==1.1.0
-djwebsockets==0.9.3
-websockets==3.1

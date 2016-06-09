@@ -27,15 +27,21 @@ class nfcThread(threading.Thread):
         #print('NFC device is initialized')
         self.state = 0
 
+    def runProcess(self):
+        p = subprocess.Popen(['/home/pi/Desktop/quick_start_example1'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        while (True):
+            retcode = p.poll()  # returns None while subprocess is running
+            line = p.stdout.readline()
+            yield line
+            if (retcode is not None):
+                break
+
     def run(self):
-        p = subprocess.Popen("/home/pi/Desktop/quick_start_example1", stdout=subprocess.PIPE)
-        # Grab stdout line by line as it becomes available.  This will loop until
-        # p terminates.
-        while p.poll() is None:
-            l = p.stdout.readline()  # This blocks until it receives a newline.
-            print(l)
-            sendMessage(l)
-        subprocess.call(['/home/pi/power_measurements_skirpts/turn_off_on.sh', str(self.state)])
+        print("NFC reader started")
+        print("NFC reader executing")
+
+        for line in self.runProcess():
+            print(line)
         #nmMifare = nfc.modulation()
         #nmMifare.nmt = nfc.    NMT_ISO14443A
         #nmMifare.nbr = nfc.NBR_106
