@@ -55,7 +55,8 @@
     "ng-js-tree": "~0.0.7",
     "satellizer": "~0.14.1",
     "oclazyload": "~1.0.9",
-    "angular-socket-io": "^0.7.0"
+    "angular-socket-io": "^0.7.0",
+    "socket.io-client": "^1.4.6"
   },
   "overrides": {
     "amcharts": {
@@ -88,6 +89,9 @@
     },
     "socket.io": {
       "main": "lib/socket.js"
+    },
+    "socket.io-client": {
+      "main": "./socket.io.js"
     },
     "angular-socket-io": {
       "main": "./socket.min.js"
