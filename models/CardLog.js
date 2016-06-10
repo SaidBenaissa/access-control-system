@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var CardLogSchema = new Schema({
     chipId: String,
-    date: new Date()
+    date: {type: Date, default: Date.now},
 });
 
 module.exports = mongoose.model('CardLog', CardLogSchema);
