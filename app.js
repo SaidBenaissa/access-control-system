@@ -6,8 +6,9 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var User = require('./models/User');
-var users = require('./controllers/users');
 var auth = require('./controllers/auth');
+var cards = require('./controllers/cards');
+var users = require('./controllers/users');
 var cors = require('cors');
 var NfcReader = require('./scripts/NfcReader');
 var corsOptions = {
@@ -40,26 +41,8 @@ app.use(methodOverride());
  * Routes definitions
  */
 app.use('/api', users);
+app.use('/api', cards)
 app.use('/api', auth);
-
-app.get('/test', function (req, res) {
-    User.find({}, function (err, users) {
-        res.json(users);
-    });
-});
-
-app.get('/test1', function (req, res) {
-    var u = new User({
-        name: 'fgonlkdf',
-        password: 'fffff',
-        admin: false,
-        mail: 'teeee'
-    });
-    u.save(function () {
-        res.json(u);
-    });
-
-});
 
 app.get('*', function (req, res) {
     res.sendfile('./release/index.html'); // load the single view file (angular will handle the page changes on the front-end)
@@ -77,17 +60,15 @@ var io = require('socket.io').listen(server);
 
 
 /**
- * Socket.io server
- */
-io.sockets.on('connection', function (socket) {
-    socket.emit('message', {message: 'welcome to the chat'});
-    socket.on('send', function (data) {
-        io.sockets.emit('message', data);
-    });
-});
-
-/**
  *
  */
 var nfcReader = new NfcReader();
 nfcReader.start();
+
+
+/**
+ * Socket.io server
+ */
+io.on('connection', function (socket) {
+    nfcReader.addListener(socket);
+});

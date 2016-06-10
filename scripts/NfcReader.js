@@ -3,6 +3,7 @@ var spawn = require('child_process').spawn,
     config = require('../config.json');
 
 function NfcReader() {
+    this._listeners = [];
 }
 
 NfcReader.prototype = {
@@ -20,7 +21,11 @@ NfcReader.prototype = {
     },
     handleStdOut: function (data) {
         var cardLog = new CardLog({chipId: data});
-        cardLog.save();
+        cardLog.save(function () {
+            this._listeners.forEach(function (socket) {
+                socket.emit('card', {card: data});
+            });
+        }.bind(this));
     },
     handleStdErr: function (data) {
         console.log('stderr: ' + data);
@@ -28,6 +33,9 @@ NfcReader.prototype = {
     handleClose: function (code) {
         console.log('closing code: ' + code);
         process.exit();
+    },
+    addListener: function (socket) {
+        this._listeners.push(socket);
     }
 };
 

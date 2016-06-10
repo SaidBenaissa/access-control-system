@@ -6,10 +6,10 @@ angular.module('AccessControlSystem', [
     'ui.sortable',
     'ui.router',
     'ngTouch',
-    'ngWebSocket',
+    'btford.socket-io',
     'toastr',
     'smart-table',
-    "xeditable",
+    'xeditable',
     'ui.slimscroll',
     'ngJsTree',
     'angular-progress-button-styles',
@@ -18,4 +18,5 @@ angular.module('AccessControlSystem', [
     'AccessControlSystem.theme',
     'AccessControlSystem.main',
     'AccessControlSystem.login',
+    'AccessControlSystem.factories',
 ]);

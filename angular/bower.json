@@ -55,7 +55,7 @@
     "ng-js-tree": "~0.0.7",
     "satellizer": "~0.14.1",
     "oclazyload": "~1.0.9",
-    "angular-websocket": "~2.0.0"
+    "angular-socket-io": "^0.7.0"
   },
   "overrides": {
     "amcharts": {
@@ -85,6 +85,12 @@
     },
     "slimScroll": {
       "main": "./jquery.slimscroll.js"
+    },
+    "socket.io": {
+      "main": "lib/socket.js"
+    },
+    "angular-socket-io": {
+      "main": "./socket.min.js"
     },
     "font-awesome": {
       "main": [
