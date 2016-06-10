@@ -1,6 +1,14 @@
 # access-control-system
 
 ## Installation
+### Mongdod for raspberry
+```{r, engine='bash', count_lines}
+$ git clone https://github.com/svvitale/mongo4pi.git
+$ cd mongo4pi
+$ ./install.sh
+```
+
+
 ### Boost library (experimental)
 For installation use
 ```{r, engine='bash', count_lines}
