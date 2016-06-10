@@ -18,7 +18,6 @@ print_hex(const uint8_t *pbtData, const size_t szBytes) {
     for (szPos = 0; szPos < szBytes; szPos++) {
         fprintf(stdout, "%02x ", pbtData[szPos]);
     }
-    fprintf(stdout, "\n");
 }
 
 int main(int argc, const char *argv[]) {
@@ -63,8 +62,8 @@ int main(int argc, const char *argv[]) {
         if (nt.nti.nai.szAtsLen) {
             fprintf(stdout, "          ATS (ATR): ");
             print_hex(nt.nti.nai.abtAts, nt.nti.nai.szAtsLen);
-        }
-        fflush(stdout);*/
+        }*/
+        fflush(stdout);
         sleep(3);
     }
     exit(EXIT_SUCCESS);

@@ -26,7 +26,7 @@ db.once('open', function () {
     console.log("DB connection opened")
 });
 
-app.use(express.static(__dirname + '/release'));                 // set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/angular/release'));                 // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));                                         // log every request to the console
 app.use(bodyParser.urlencoded({
     extended: true
@@ -45,7 +45,7 @@ app.use('/api', cards)
 app.use('/api', auth);
 
 app.get('*', function (req, res) {
-    res.sendfile('./release/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    res.sendfile('./angular/release/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 
 /**
@@ -60,7 +60,7 @@ var io = require('socket.io').listen(server);
 
 
 /**
- *
+ * Start NFC reader
  */
 var nfcReader = new NfcReader();
 nfcReader.start();
@@ -71,4 +71,8 @@ nfcReader.start();
  */
 io.on('connection', function (socket) {
     nfcReader.addListener(socket);
+
+    socket.on('disconnect', function () {
+        nfcReader.removeListener(socket);
+    });
 });

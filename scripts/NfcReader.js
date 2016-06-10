@@ -11,15 +11,16 @@ NfcReader.prototype = {
     start: function () {
         if (config.ENABLE.NFC) {
             this._child = spawn(config.SCRIPT_PATH.NFC);
-            this._child.stdout.on('data', this.handleStdOut);
-            this._child.stderr.on('data', this.handleStdErr);
-            this._child.on('close', this.handleClose);
+            this._child.stdout.on('data', this.handleStdOut.bind(this));
+            this._child.stderr.on('data', this.handleStdErr.bind(this));
+            this._child.on('close', this.handleClose.bind(this));
             console.log("NFC reader started");
         } else {
             console.log("NFC reader is turned off in config file.");
         }
     },
     handleStdOut: function (data) {
+        data = data.toString().trim();
         var cardLog = new CardLog({chipId: data});
         cardLog.save(function () {
             this._listeners.forEach(function (socket) {
@@ -36,6 +37,12 @@ NfcReader.prototype = {
     },
     addListener: function (socket) {
         this._listeners.push(socket);
+    },
+    removeListener: function (socket) {
+        var index = this._listeners.indexOf(socket);
+        if (index !== -1) {
+            this._listeners.splice(index, 1);
+        }
     }
 };
 
