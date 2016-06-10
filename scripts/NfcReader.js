@@ -1,10 +1,10 @@
 var spawn = require('child_process').spawn;
 
-function nfcReader() {
+function NfcReader() {
 }
 
-var nfcReader = {
-    constructor: nfcReader(),
+NfcReader.prototype = {
+    constructor: NfcReader,
     start: function () {
         this._child = spawn('./read_nfc');
         this._child.stdout.on('data', this.handleStdOut);
@@ -24,4 +24,4 @@ var nfcReader = {
     }
 };
 
-module.export = nfcReader;
+module.exports = NfcReader;

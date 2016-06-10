@@ -9,7 +9,7 @@ var User = require('./models/User');
 var users = require('./controllers/users');
 var auth = require('./controllers/auth');
 var cors = require('cors');
-var nfcReader = require('./scripts/nfcReader')
+var NfcReader = require('./scripts/NfcReader');
 var corsOptions = {
     origin: '*'
 };
@@ -89,5 +89,5 @@ io.sockets.on('connection', function (socket) {
 /**
  *
  */
-var nfcReader = new nfcReader();
+var nfcReader = new NfcReader();
 nfcReader.start();
