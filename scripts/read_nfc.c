@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <nfc/nfc.h>
+#include <signal.h>
 
 nfc_device *pnd;
 nfc_context *context;
