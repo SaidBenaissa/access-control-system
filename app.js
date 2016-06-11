@@ -11,20 +11,14 @@ var cards = require('./controllers/cards');
 var users = require('./controllers/users');
 var cors = require('cors');
 var NfcReader = require('./scripts/NfcReader');
-var corsOptions = {
-    origin: '*'
-};
+var TCPClient = require('./scripts/TCPClient');
 
 /**
  * Configuration
  */
-mongoose.connect('mongodb://localhost/access-control-system');
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-    console.log("DB connection opened")
-});
+var corsOptions = {
+    origin: '*'
+};
 
 app.use(express.static(__dirname + '/angular/release'));                 // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));                                         // log every request to the console
@@ -35,6 +29,17 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());                                     // parse application/json
 app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
 app.use(methodOverride());
+
+/**
+ * Database configuration
+ */
+mongoose.connect('mongodb://localhost/access-control-system');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+    console.log("DB connection opened")
+});
 
 
 /**
@@ -65,6 +70,11 @@ var io = require('socket.io').listen(server);
 var nfcReader = new NfcReader();
 nfcReader.start();
 
+/**
+ * Start TCP client
+ */
+var tcpClient = new TCPClient();
+tcpClient.start();
 
 /**
  * Socket.io server

@@ -6,6 +6,7 @@
     "FIBARO": true
   },
   "SCRIPT_PATH": {
-    "NFC": "./read_nfc"
+    "NFC": "./read_nfc",
+    "FIBARO": "./boostserver"
   }
 }
