@@ -40,9 +40,9 @@ app.use(methodOverride());
 /**
  * Routes definitions
  */
-app.use('/api', users);
-app.use('/api', cards)
-app.use('/api', auth);
+app.use('/api/users', users);
+app.use('/api/cards', cards);
+app.use('/api/auth', auth);
 
 app.get('*', function (req, res) {
     res.sendfile('./angular/release/index.html'); // load the single view file (angular will handle the page changes on the front-end)

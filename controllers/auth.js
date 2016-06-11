@@ -4,7 +4,7 @@ var express = require('express'),
     jwt = require('jsonwebtoken'),
     config = require('../config.json');
 
-router.post('/auth/login', function (req, res) {
+router.post('/login', function (req, res) {
     User.findOne({
         name: req.body.name
     }, function (err, user) {

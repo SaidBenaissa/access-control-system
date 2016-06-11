@@ -9,16 +9,16 @@
         var vm = this;
 
         vm.personalInfo = {};
-        vm.productInfo = {};
+        vm.cardInfo = {};
 
         vm.save = function () {
             console.log('som v callbacku');
             $http({
-                url: apiBase + 'barsco',
+                url: apiBase + 'users/register',
                 method: "POST",
                 data: {
                     personalInfo: vm.personalInfo,
-                    productInfo: vm.productInfo
+                    cardInfo: vm.cardInfo
                 }
             }).then(function (data) {
                 $log.debug(data);

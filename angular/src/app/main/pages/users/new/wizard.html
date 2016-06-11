@@ -9,9 +9,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group has-feedback"
-                                         ng-class="{'has-error': vm.personalInfoForm.username.$invalid && (vm.personalInfoForm.username.$dirty || vm.personalInfoForm.$submitted)}">
+                                         ng-class="{'has-error': vm.personalInfoForm.name.$invalid && (vm.personalInfoForm.name.$dirty || vm.personalInfoForm.$submitted)}">
                                         <label for="exampleUsername1">Name</label>
-                                        <input type="text" class="form-control" id="exampleUsername1" name="name" placeholder="Name" ng-model="vm.personalInfo.username" required>
+                                        <input type="text" class="form-control" id="exampleUsername1" name="name" placeholder="Name" ng-model="vm.personalInfo.name" required>
                                         <span class="help-block error-block basic-block">Required</span>
                                     </div>
                                 </div>
@@ -25,13 +25,13 @@
                             </div>
                         </form>
                     </ba-wizard-step>
-                    <ba-wizard-step title="Card Info" form="vm.productInfoForm">
-                        <form name="vm.productInfoForm" novalidate>
+                    <ba-wizard-step title="Card Info" form="vm.cardInfoForm">
+                        <form name="vm.cardInfoForm" novalidate>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group" ng-class="{'has-error': vm.productInfoForm.productId.$invalid && (vm.productInfoForm.productId.$dirty || vm.productInfoForm.$submitted)}">
-                                        <label for="productId">Card ID</label>
-                                        <input type="text" class="form-control" id="productId" name="productId" placeholder="Card ID" ng-model="vm.productInfo.productId" required>
+                                    <div class="form-group" ng-class="{'has-error': vm.cardInfoForm.chipId.$invalid && (vm.cardInfoForm.chipId.$dirty || vm.cardInfoForm.$submitted)}">
+                                        <label for="chipId">Card ID</label>
+                                        <input type="text" class="form-control" id="chipId" name="chipId" placeholder="Card ID" ng-model="vm.cardInfo.chipId" required>
                                         <span class="help-block error-block basic-block">Required</span>
                                     </div>
                                 </div>
@@ -40,9 +40,9 @@
                     </ba-wizard-step>
                     <ba-wizard-step title="Finish">
                         <form class="form-horizontal" name="vm.finishForm" novalidate>
-                            Name: {{ vm.personalInfo.username }} <br>
+                            Name: {{ vm.personalInfo.name }} <br>
                             E-mail: {{ vm.personalInfo.email }} <br>
-                            Card ID: {{ vm.productInfo.productId }} <br><br>
+                            Card ID: {{ vm.cardInfo.chipId }} <br><br>
                         </form>
                     <button type="button" class="btn btn-primary" ng-click="vm.save()">save</button>
                     </ba-wizard-step>
