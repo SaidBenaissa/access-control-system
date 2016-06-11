@@ -23,10 +23,10 @@
             }).then(function (data) {
                 $log.debug(data);
             })
-        }
+        };
 
         socket.on('card', function (data) {
-            vm.cardInfo.chipId = data;
+            vm.cardInfo.chipId = data.card;
         });
 
     }
