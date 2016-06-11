@@ -9,17 +9,13 @@
         .run(themeRun);
 
     /** @ngInject */
-    function themeRun($rootScope, baSidebarService, socket) {
+    function themeRun($rootScope, baSidebarService) {
 
         $rootScope.$baSidebarService = baSidebarService;
         $rootScope.$on('$routeChangeStart', function (event) {
             checkAuthentification();
         });
         checkAuthentification();
-
-        socket.on('card', function (data) {
-            console.log(data);
-        });
 
         function checkAuthentification() {
             /*if (!$rootScope.user) {

@@ -5,7 +5,7 @@
         .controller('WizardCtrl1', WizardCtrl1);
 
     /** @ngInject */
-    function WizardCtrl1($scope, $log, $http, apiBase) {
+    function WizardCtrl1(socket, $log, $http, apiBase) {
         var vm = this;
 
         vm.personalInfo = {};
@@ -24,6 +24,10 @@
                 $log.debug(data);
             })
         }
+
+        socket.on('card', function (data) {
+            vm.cardInfo.chipId = data;
+        });
 
     }
 

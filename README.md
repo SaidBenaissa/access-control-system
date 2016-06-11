@@ -87,3 +87,9 @@ and then just kill it with
 ```{r, engine='bash', count_lines}
 $ kill PID
 ```
+
+### MongoDB is corrupted
+If you do not stop mongod correctly, your db may corrupt. Remove `.lock` file
+```{r, engine='bash', count_lines}
+$ sudo rm /var/lib/mongodb/mongod.lock
+```
