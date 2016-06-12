@@ -24,7 +24,7 @@ TCPClient.prototype = {
         this._client.write('Hello, server! Love, Client.');
     },
     handleData: function (data) {
-        console.log(data);
+        console.log(data.toString());
     },
     handleClose: function () {
         console.log(chalk.red('Connection to TCP closed'));
