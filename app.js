@@ -1,17 +1,22 @@
 var config = require('./config.json');
+var bodyParser = require('body-parser');
+var chalk = require('chalk');
+var cors = require('cors');
 var express = require('express');
-var app = express();
 var mongoose = require('mongoose');
 var morgan = require('morgan');
-var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var User = require('./models/User');
 var auth = require('./controllers/auth');
 var cards = require('./controllers/cards');
 var users = require('./controllers/users');
-var cors = require('cors');
 var NfcReader = require('./scripts/NfcReader');
 var TCPClient = require('./scripts/TCPClient');
+
+/**
+ * App
+ */
+var app = express();
 
 /**
  * Configuration
@@ -36,9 +41,12 @@ app.use(methodOverride());
 mongoose.connect('mongodb://localhost/access-control-system');
 
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', function (e) {
+    console.log(chalk.red(e));
+    process.exit();
+});
 db.once('open', function () {
-    console.log("DB connection opened")
+    console.log(chalk.green("DB connection opened"));
 });
 
 
@@ -58,7 +66,7 @@ app.get('*', function (req, res) {
  * @type {http.Server}
  */
 var server = app.listen(config.PORT, function () {
-    console.log("Server is listening on port " + config.PORT);
+    console.log(chalk.green("Server is listening on port " + config.PORT));
 });
 
 var io = require('socket.io').listen(server);

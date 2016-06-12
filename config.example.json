@@ -6,7 +6,10 @@
     "FIBARO": true
   },
   "SCRIPT_PATH": {
-    "NFC": "./read_nfc",
-    "FIBARO": "./boostserver"
+    "NFC": "./read_nfc"
+  },
+  "FIBARO": {
+    "URL": "127.0.0.1",
+    "PORT": 9786
   }
 }

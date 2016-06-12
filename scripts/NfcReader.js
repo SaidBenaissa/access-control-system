@@ -1,4 +1,5 @@
-var spawn = require('child_process').spawn,
+var chalk = require('chalk'),
+    spawn = require('child_process').spawn,
     CardLog = require('../models/CardLog'),
     config = require('../config.json');
 
@@ -14,9 +15,9 @@ NfcReader.prototype = {
             this._child.stdout.on('data', this.handleStdOut.bind(this));
             this._child.stderr.on('data', this.handleStdErr.bind(this));
             this._child.on('close', this.handleClose.bind(this));
-            console.log("NFC reader started");
+            console.log(chalk.green("NFC reader started"));
         } else {
-            console.log("NFC reader is turned off in config file.");
+            console.log(chalk.yellow("NFC reader is turned off in config file."));
         }
     },
     handleStdOut: function (data) {
@@ -32,7 +33,7 @@ NfcReader.prototype = {
         console.log('stderr: ' + data);
     },
     handleClose: function (code) {
-        console.log('closing code: ' + code);
+        console.log(chalk.red('NFC closing code: ' + code));
         process.exit();
     },
     addListener: function (socket) {
