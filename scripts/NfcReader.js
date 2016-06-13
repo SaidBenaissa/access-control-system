@@ -33,7 +33,7 @@ NfcReader.prototype = {
                         socket.emit('card', {card: data});
                     });
                 }
-            });
+            }.bind(this));
         }.bind(this));
     },
     handleStdErr: function (data) {
