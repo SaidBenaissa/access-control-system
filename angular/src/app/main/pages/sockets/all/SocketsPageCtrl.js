@@ -36,6 +36,12 @@
         }];
 
         vm.sockets = [{
+            id: "0",
+            name: "Dev0",
+            activeUser: "Usr0",
+            color: "0",
+            state: true
+        }, {
             id: "1",
             name: "Dev1",
             activeUser: "Usr1",
