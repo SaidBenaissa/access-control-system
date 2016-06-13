@@ -1,6 +1,7 @@
 var chalk = require('chalk'),
     spawn = require('child_process').spawn,
     CardLog = require('../models/CardLog'),
+    Card = require('../models/Card'),
     config = require('../config.json');
 
 function NfcReader() {
@@ -24,8 +25,14 @@ NfcReader.prototype = {
         data = data.toString().trim();
         var cardLog = new CardLog({chipId: data});
         cardLog.save(function () {
-            this._listeners.forEach(function (socket) {
-                socket.emit('card', {card: data});
+            Card.findOne({chipId: data}, function (err, card) {
+                if (card) {
+                    // TODO: check permissions, turn on // off device
+                } else {
+                    this._listeners.forEach(function (socket) {
+                        socket.emit('card', {card: data});
+                    });
+                }
             });
         }.bind(this));
     },
