@@ -30,10 +30,10 @@
                     });
                     input.on('switchChange.bootstrapSwitch', function (event, state) {
                         scope.ngModel = state;
+                        scope.$apply();
                         if (scope.ngChange) {
                             scope.ngChange();
                         }
-                        scope.$apply();
                     });
                 });
             }

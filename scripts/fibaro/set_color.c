@@ -21,7 +21,7 @@ int reset_default_coloring(ZWay zway) {
         int i = 0;
         while (list[i]) {
             if (!device || i == device) {
-                zway_cc_configuration_set(zway, list[i], 0, 0x3D, 1, color, NULL, NULL, NULL);
+                zway_cc_configuration_set(zway, list[i], 0, 0x3D, color, 0x01, NULL, NULL, NULL);
             }
             i++;
         }
