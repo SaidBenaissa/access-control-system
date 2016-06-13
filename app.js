@@ -9,6 +9,7 @@ var methodOverride = require('method-override');
 var User = require('./models/User');
 var auth = require('./controllers/auth');
 var cards = require('./controllers/cards');
+var sockets = require('./controllers/sockets');
 var users = require('./controllers/users');
 var NfcReader = require('./scripts/NfcReader');
 var TCPClient = require('./scripts/TCPClient');
@@ -53,9 +54,10 @@ db.once('open', function () {
 /**
  * Routes definitions
  */
-app.use('/api/users', users);
-app.use('/api/cards', cards);
 app.use('/api/auth', auth);
+app.use('/api/cards', cards);
+app.use('/api/sockets', sockets);
+app.use('/api/users', users);
 
 app.get('*', function (req, res) {
     res.sendfile('./angular/release/index.html'); // load the single view file (angular will handle the page changes on the front-end)

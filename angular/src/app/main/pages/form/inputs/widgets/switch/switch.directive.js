@@ -14,10 +14,11 @@
             restrict: 'EA',
             replace: true,
             scope: {
-                ngModel: '='
+                ngModel: '=',
+                ngChange: '&'
             },
             template: function (el, attrs) {
-                return '<div class="switch-container ' + (attrs.color || '') + '"><input type="checkbox" ng-model="ngModel"></div>';
+                return '<div class="switch-container ' + (attrs.color || '') + '"><input type="checkbox" ng-model="ngModel" ng-change="ngChange"></div>';
             },
             link: function (scope, elem, attr) {
                 $timeout(function () {
@@ -29,6 +30,9 @@
                     });
                     input.on('switchChange.bootstrapSwitch', function (event, state) {
                         scope.ngModel = state;
+                        if (scope.ngChange) {
+                            scope.ngChange();
+                        }
                         scope.$apply();
                     });
                 });

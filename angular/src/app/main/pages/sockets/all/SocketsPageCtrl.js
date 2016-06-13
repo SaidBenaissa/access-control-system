@@ -9,7 +9,7 @@
         .controller('SocketsPageCtrl', SocketsPageCtrl);
 
     /** @ngInject */
-    function SocketsPageCtrl($filter, editableOptions, editableThemes) {
+    function SocketsPageCtrl($http, $log, apiBase) {
         var vm = this;
 
         vm.colors = [{
@@ -55,8 +55,24 @@
             state: true
         }];
 
-        vm.test = function (socket) {
-            console.log(socket);
+        vm.changeColor = function (socket) {
+            $log.debug(socket);
+            $http.post(apiBase + 'sockets/color', {
+                color: socket.color.value,
+                deviceId: socket.id
+            }).then(function (data) {
+                $log.debug(data);
+            });
+        };
+
+        vm.switch = function (socket) {
+            $log.debug(socket);
+            $http.post(apiBase + 'sockets/switch', {
+                color: socket.color.value,
+                deviceId: socket.id
+            }).then(function (data) {
+                $log.debug(data);
+            });
         }
     }
 

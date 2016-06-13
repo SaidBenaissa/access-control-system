@@ -15,7 +15,6 @@ router.post('/register', function (req, res) {
     newUser.save(function (err, user) {
         Card.findOne({chipId: req.body.cardInfo.chipId}, function (err, card) {
             if (!card) {
-                console.log(req.body);
                 var card = new Card(req.body.cardInfo);
                 card.save(function (err, card) {
                     user.card = card._id;

@@ -24,13 +24,13 @@
         </td>
         <td>
             <div class="switches clearfix">
-                <switch color="success" ng-model="socket.state"></switch>
+                <switch color="success" ng-model="socket.state" ng-change="vm.switch(socket)"></switch>
             </div>
         </td>
         <td>
             <div class="form-group" style="margin-bottom: 0">
                 <select class="form-control selectpicker" selectpicker title="Choose color"
-                        ng-change="vm.test(socket)"
+                        ng-change="vm.changeColor(socket)"
                         ng-model="socket.color"
                         ng-options="item as item.label for item in vm.colors">
                 </select>

@@ -6,7 +6,11 @@
     "FIBARO": true
   },
   "SCRIPT_PATH": {
-    "NFC": "./read_nfc"
+    "NFC": "./read_nfc",
+    "FIBARO": {
+      "COLOR": "/home/pi/",
+      "SWITCH": "/home/pi/"
+    }
   },
   "FIBARO": {
     "URL": "127.0.0.1",
