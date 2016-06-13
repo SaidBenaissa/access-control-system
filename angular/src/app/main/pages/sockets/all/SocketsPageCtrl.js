@@ -74,7 +74,7 @@
         vm.switch = function (socket) {
             $log.debug(socket);
             $http.post(apiBase + 'sockets/switch', {
-                color: socket.color.value,
+                switch: socket.state ? "1" : "0",
                 deviceId: socket.id
             }).then(function (data) {
                 $log.debug(data);
