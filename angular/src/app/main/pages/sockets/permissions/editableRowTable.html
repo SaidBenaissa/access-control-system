@@ -1,6 +1,6 @@
 <div class="add-row-editable-table">
 </div>
-<table class="table table-bordered table-hover table-condensed">
+<table class="table table-bordered table-hover table-condensed text-center">
     <tr>
         <td>User</td>
         <td>Device 1</td>
@@ -15,52 +15,40 @@
             {{ user.name }}
         </td>
         <td>
-            <div ng-if=user.dev1>
-                <input type="checkbox" id="inlineCheckbox01" value="option1" checked>
-            </div>
-            <div ng-if=!user.dev1>
-                <input type="checkbox" id="inlineCheckbox01" value="option1">
-            </div>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev1">
+                <span></span>
+            </label>
         </td>
         <td>
-            <div ng-if=user.dev2>
-                <input type="checkbox" id="inlineCheckbox02" value="option2" checked>
-            </div>
-            <div ng-if=!user.dev2>
-                <input type="checkbox" id="inlineCheckbox02" value="option2">
-            </div>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev2">
+                <span></span>
+            </label>
         </td>
         <td>
-            <div ng-if=user.dev3>
-                <input type="checkbox" id="inlineCheckbox03" value="option3" checked>
-            </div>
-            <div ng-if=!user.dev3>
-                <input type="checkbox" id="inlineCheckbox03" value="option3">
-            </div>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev3">
+                <span></span>
+            </label>
         </td>
         <td>
-            <div ng-if=user.dev4>
-                <input type="checkbox" id="inlineCheckbox04" value="option4" checked>
-            </div>
-            <div ng-if=!user.dev4>
-                <input type="checkbox" id="inlineCheckbox04" value="option4">
-            </div>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev4">
+                <span></span>
+            </label>
         </td>
         <td>
-            <div ng-if=user.dev5>
-                <input type="checkbox" id="inlineCheckbox05" value="option5" checked>
-            </div>
-            <div ng-if=!user.dev5>
-                <input type="checkbox" id="inlineCheckbox05" value="option5">
-            </div>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev5">
+                <span></span>
+            </label>
         </td>
         <td>
-            <div ng-if=user.dev6>
-                <input type="checkbox" id="inlineCheckbox06" value="option6" checked>
-            </div>
-            <div ng-if=!user.dev6>
-                <input type="checkbox" id="inlineCheckbox06" value="option6">
-            </div>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev6">
+                <span></span>
+            </label>
         </td>
     </tr>
 </table>
