@@ -1,0 +1,66 @@
+<div class="add-row-editable-table">
+</div>
+<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <td>User</td>
+        <td>Device 1</td>
+        <td>Device 2</td>
+        <td>Device 3</td>
+        <td>Device 4</td>
+        <td>Device 5</td>
+        <td>Device 6</td>
+    </tr>
+    <tr ng-repeat="user in vm.users" class="editable-row">
+        <td>
+            {{ user.name }}
+        </td>
+        <td>
+            <div ng-if=user.dev1>
+                <input type="checkbox" id="inlineCheckbox01" value="option1" checked>
+            </div>
+            <div ng-if=!user.dev1>
+                <input type="checkbox" id="inlineCheckbox01" value="option1">
+            </div>
+        </td>
+        <td>
+            <div ng-if=user.dev2>
+                <input type="checkbox" id="inlineCheckbox02" value="option2" checked>
+            </div>
+            <div ng-if=!user.dev2>
+                <input type="checkbox" id="inlineCheckbox02" value="option2">
+            </div>
+        </td>
+        <td>
+            <div ng-if=user.dev3>
+                <input type="checkbox" id="inlineCheckbox03" value="option3" checked>
+            </div>
+            <div ng-if=!user.dev3>
+                <input type="checkbox" id="inlineCheckbox03" value="option3">
+            </div>
+        </td>
+        <td>
+            <div ng-if=user.dev4>
+                <input type="checkbox" id="inlineCheckbox04" value="option4" checked>
+            </div>
+            <div ng-if=!user.dev4>
+                <input type="checkbox" id="inlineCheckbox04" value="option4">
+            </div>
+        </td>
+        <td>
+            <div ng-if=user.dev5>
+                <input type="checkbox" id="inlineCheckbox05" value="option5" checked>
+            </div>
+            <div ng-if=!user.dev5>
+                <input type="checkbox" id="inlineCheckbox05" value="option5">
+            </div>
+        </td>
+        <td>
+            <div ng-if=user.dev6>
+                <input type="checkbox" id="inlineCheckbox06" value="option6" checked>
+            </div>
+            <div ng-if=!user.dev6>
+                <input type="checkbox" id="inlineCheckbox06" value="option6">
+            </div>
+        </td>
+    </tr>
+</table>

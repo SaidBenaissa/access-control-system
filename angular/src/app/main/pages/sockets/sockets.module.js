@@ -8,6 +8,7 @@
     angular.module('AccessControlSystem.main.pages.sockets', [
         'AccessControlSystem.main.pages.sockets.new',
         'AccessControlSystem.main.pages.sockets.all',
+        'AccessControlSystem.main.pages.sockets.permissions',
     ])
 
 })();
