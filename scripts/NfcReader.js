@@ -24,7 +24,7 @@ NfcReader.prototype = {
     handleStdOut: function (data) {
         data = data.toString().trim();
         var cardLog = new CardLog({chipId: data});
-        cardLog.save(function () {
+        cardLog.save(function (err, cardLog) {
             Card.findOne({chipId: data}, function (err, card) {
                 if (card) {
                     // TODO: check permissions, turn on // off device
@@ -33,6 +33,9 @@ NfcReader.prototype = {
                         socket.emit('card', {card: data});
                     });
                 }
+                this._listeners.forEach(function (socket) {
+                    socket.emit('dashboard', cardLog);
+                });
             }.bind(this));
         }.bind(this));
     },
