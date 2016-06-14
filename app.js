@@ -60,7 +60,7 @@ app.use('/api/sockets', sockets);
 app.use('/api/users', users);
 
 app.get('*', function (req, res) {
-    res.sendFile('./angular/release/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    res.sendFile(__dirname + '/angular/release/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 
 /**
