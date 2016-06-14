@@ -11,7 +11,7 @@ var PermissionSchema = new Schema({
     dev3: Boolean,
     dev4: Boolean,
     dev5: Boolean,
-    dev6: Boolean,
+    dev6: Boolean
 });
 
 module.exports = mongoose.model('Permission', PermissionSchema);
