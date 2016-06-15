@@ -1,0 +1,54 @@
+<div class="add-row-editable-table">
+</div>
+<table class="table table-bordered table-hover table-condensed text-center">
+    <tr>
+        <td>User</td>
+        <td>Device 1</td>
+        <td>Device 2</td>
+        <td>Device 3</td>
+        <td>Device 4</td>
+        <td>Device 5</td>
+        <td>Device 6</td>
+    </tr>
+    <tr ng-repeat="user in vm.users" class="editable-row">
+        <td>
+            {{ user.name }}
+        </td>
+        <td>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev1">
+                <span></span>
+            </label>
+        </td>
+        <td>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev2">
+                <span></span>
+            </label>
+        </td>
+        <td>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev3">
+                <span></span>
+            </label>
+        </td>
+        <td>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev4">
+                <span></span>
+            </label>
+        </td>
+        <td>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev5">
+                <span></span>
+            </label>
+        </td>
+        <td>
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-checked="user.dev6">
+                <span></span>
+            </label>
+        </td>
+    </tr>
+</table>

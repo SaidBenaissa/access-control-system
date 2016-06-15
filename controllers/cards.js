@@ -3,7 +3,7 @@ var express = require('express'),
     CardLog = require('../models/CardLog');
 
 router.get('/log', function (req, res) {
-    CardLog.find({}, function (err, cardLogs) {
+    CardLog.find({}).sort({date: 'desc'}).limit(15).exec(function (err, cardLogs) {
         res.json(cardLogs);
     });
 });
