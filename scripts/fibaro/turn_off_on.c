@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 int state = 0;
-int device = 0;
+int device = -1;
 
 void reset_zway(ZWay zway) {
     zway_controller_set_default(zway);
@@ -20,7 +20,7 @@ int reset_default_coloring(ZWay zway) {
     if (list != NULL) {
         int i = 0;
         while (list[i]) {
-            if (!device || i == device) {
+            if (device == -1 || i == device) {
                 zway_cc_switch_binary_set(zway, list[i], 0, state, NULL, NULL, NULL);
             }
             i++;
