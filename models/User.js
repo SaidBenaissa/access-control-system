@@ -12,7 +12,8 @@ var UserSchema = new Schema({
     card: {
         type: Schema.Types.ObjectId,
         ref: 'Card'
-    }
+    },
+    permissions: Schema.Types.Mixed
 });
 
 module.exports = mongoose.model('User', UserSchema);

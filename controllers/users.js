@@ -30,4 +30,19 @@ router.post('/register', function (req, res) {
     });
 });
 
+router.get('/permissions', function (req, res) {
+    User.find({}, function (err, users) {
+        res.json(users);
+    }).sort({name: 'asc'});
+});
+
+router.post('/update', function (req, res) {
+    User.findOne({_id: req.body._id}, function (err, user) {
+        user.permissions = req.body.permissions;
+        user.save(function (err, u) {
+            res.json(user);
+        });
+    });
+});
+
 module.exports = router;
