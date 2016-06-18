@@ -3,9 +3,14 @@ var Schema = mongoose.Schema;
 
 var SocketSchema = new Schema({
     socketId: String,
-    name: String,
-    color: Number,
-    updated: {type: Date, default: Date.now},
+    state: {
+        type: Boolean,
+        default: false,
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 module.exports = mongoose.model('Socket', SocketSchema);

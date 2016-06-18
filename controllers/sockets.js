@@ -1,6 +1,7 @@
 var express = require('express'),
     router = express.Router(),
-    Fibaro = require('../scripts/Fibaro');
+    Fibaro = require('../scripts/Fibaro'),
+    Socket = require('../models/Socket');
 
 
 router.post('/color', function (req, res) {
@@ -9,6 +10,12 @@ router.post('/color', function (req, res) {
 
 router.post('/switch', function (req, res) {
     Fibaro.switch(req.body.deviceId, req.body.switch, res);
+});
+
+router.get('/', function (req, res) {
+    Socket.find({}, function (err, sockets) {
+        res.json(sockets);
+    }).sort({socketId: 'asc'});
 });
 
 module.exports = router;

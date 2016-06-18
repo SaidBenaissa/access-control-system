@@ -1,39 +1,21 @@
-<div class="add-row-editable-table">
-</div>
 <table class="table table-bordered table-hover table-condensed">
     <tr>
-        <td></td>
-        <td>Device Name</td>
+        <td>Socket</td>
         <td>Active User</td>
         <td>Actions</td>
-        <td>Color</td>
     </tr>
     <tr ng-repeat="socket in vm.sockets" class="editable-row">
         <td>
-            {{ socket.id }}
-        </td>
-        <td>
-        <span editable-text="socket.name" e-name="name" e-form="rowform" e-required>
-          {{ socket.name }}
-        </span>
+            {{ socket.socketId }}
         </td>
         <td class="select-td">
-        <span editable-select="socket.activeUser" e-name="group" e-form="rowform" e-selectpicker>
+        <span>
           {{ socket.activeUser || 'none' }}
         </span>
         </td>
         <td>
             <div class="switches clearfix">
                 <switch color="success" ng-model="socket.state" ng-change="vm.switch(socket)"></switch>
-            </div>
-        </td>
-        <td>
-            <div class="form-group" style="margin-bottom: 0">
-                <select class="form-control selectpicker" selectpicker title="Choose color"
-                        ng-change="vm.changeColor(socket)"
-                        ng-model="socket.color"
-                        ng-options="item as item.label for item in vm.colors">
-                </select>
             </div>
         </td>
     </tr>

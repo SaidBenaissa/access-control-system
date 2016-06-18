@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var methodOverride = require('method-override');
 var User = require('./models/User');
+var Socket = require('./models/Socket');
 var auth = require('./controllers/auth');
 var cards = require('./controllers/cards');
 var sockets = require('./controllers/sockets');
@@ -47,9 +48,16 @@ db.on('error', function (e) {
     process.exit();
 });
 db.once('open', function () {
+    Socket.remove({}, function () {
+        for (var i = 1; i < 7; i++) {
+            var s = new Socket({
+                socketId: i + ""
+            });
+            s.save();
+        }
+    });
     console.log(chalk.green("DB connection opened"));
 });
-
 
 /**
  * Routes definitions
@@ -72,7 +80,6 @@ var server = app.listen(config.PORT, function () {
 });
 
 var io = require('socket.io').listen(server);
-
 
 /**
  * Start NFC reader

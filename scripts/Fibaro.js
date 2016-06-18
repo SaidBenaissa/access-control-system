@@ -19,7 +19,16 @@ Fibaro = {
             console.log(chalk.yellow("Fibaro is turned off in config file."));
         }
         res.json(["ok"]);
-    }
+    },
+    switchDevices: function (socketStates) {
+        if (config.ENABLE.FIBARO) {
+            this._child = spawn(config.SCRIPT_PATH.FIBARO.SWITCH, socketStates);
+        } else {
+            console.log(chalk.yellow("Fibaro is turned off in config file."));
+        }
+        res.json(["ok"]);
+
+    },
 };
 
 module.exports = Fibaro;

@@ -2,6 +2,8 @@ var chalk = require('chalk'),
     spawn = require('child_process').spawn,
     CardLog = require('../models/CardLog'),
     Card = require('../models/Card'),
+    User = require('../models/User'),
+    Socket = require('../models/Socket'),
     config = require('../config.json');
 
 function NfcReader() {
@@ -25,18 +27,42 @@ NfcReader.prototype = {
         data = data.toString().trim();
         var cardLog = new CardLog({chipId: data});
         cardLog.save(function (err, cardLog) {
-            Card.findOne({chipId: data}, function (err, card) {
-                if (card) {
-                    // TODO: check permissions, turn on // off device
-                } else {
+            Socket.find({}).populate('user').exec(function (err, sockets) {
+                Card.findOne({chipId: data}, function (err, card) {
+                    if (card) {
+                        User.findOne({card: card._id}, function (err, user) {
+                            if (user.permissions) {
+                                var socketStates = [];
+                                for (var i = 1; i < 7; i++) {
+                                    if (user.permissions['dev' + i]) {
+                                        if (sockets[i - 1].user) {
+                                            if (sockets[i - 1].user._id == user._id) {
+                                                sockets[i - 1].user = undefined;
+                                                sockets[i - 1].active = false;
+                                                sockets[i - 1].save();
+                                                socketStates.push((i - 1) + "", 0 + "");
+                                            }
+                                        } else {
+                                            sockets[i - 1].user = user._id;
+                                            sockets[i - 1].active = true;
+                                            sockets[i - 1].save();
+                                            socketStates.push((i - 1) + "", 1 + "");
+                                        }
+                                    }
+                                }
+                                Fibaro.switchDevices(socketStates);
+                            }
+                        });
+                    } else {
+                        this._listeners.forEach(function (socket) {
+                            socket.emit('card', {card: data});
+                        });
+                    }
                     this._listeners.forEach(function (socket) {
-                        socket.emit('card', {card: data});
+                        socket.emit('dashboard', cardLog);
                     });
-                }
-                this._listeners.forEach(function (socket) {
-                    socket.emit('dashboard', cardLog);
-                });
-            }.bind(this));
+                }.bind(this));
+            }.bind(this))
         }.bind(this));
     },
     handleStdErr: function (data) {
