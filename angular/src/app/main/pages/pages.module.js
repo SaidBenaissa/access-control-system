@@ -9,13 +9,13 @@
         'ui.router',
 
         'AccessControlSystem.main.pages.dashboard',
-        'AccessControlSystem.main.pages.ui',
+        /*'AccessControlSystem.main.pages.ui',
         'AccessControlSystem.main.pages.components',
         'AccessControlSystem.main.pages.form',
         'AccessControlSystem.main.pages.tables',
         'AccessControlSystem.main.pages.charts',
         'AccessControlSystem.main.pages.maps',
-        'AccessControlSystem.main.pages.profile',
+        'AccessControlSystem.main.pages.profile',*/
         'AccessControlSystem.main.pages.users',
         'AccessControlSystem.main.pages.sockets',
     ])
@@ -23,7 +23,7 @@
 
     /** @ngInject */
     function routeConfig(baSidebarServiceProvider) {
-        baSidebarServiceProvider.addStaticItem({
+/*        baSidebarServiceProvider.addStaticItem({
             title: 'Pages',
             icon: 'ion-document',
             subMenu: [{
@@ -55,7 +55,7 @@
                     disabled: true
                 }]
             }]
-        });
+        });*/
     }
 
 })();

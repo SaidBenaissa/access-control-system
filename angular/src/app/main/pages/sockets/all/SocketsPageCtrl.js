@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    angular.module('AccessControlSystem.main.pages.tables')
+    angular.module('AccessControlSystem.main.pages.sockets.all')
         .controller('SocketsPageCtrl', SocketsPageCtrl);
 
     /** @ngInject */
