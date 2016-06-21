@@ -1,19 +1,20 @@
-var config = require('./config.json');
-var bodyParser = require('body-parser');
-var chalk = require('chalk');
-var cors = require('cors');
-var express = require('express');
-var mongoose = require('mongoose');
-var morgan = require('morgan');
-var methodOverride = require('method-override');
-var User = require('./models/User');
-var Socket = require('./models/Socket');
-var auth = require('./controllers/auth');
-var cards = require('./controllers/cards');
-var sockets = require('./controllers/sockets');
-var users = require('./controllers/users');
-var NfcReader = require('./scripts/NfcReader');
-var TCPClient = require('./scripts/TCPClient');
+var config = require('./config.json'),
+    bodyParser = require('body-parser'),
+    chalk = require('chalk'),
+    cors = require('cors'),
+    express = require('express'),
+    methodOverride = require('method-override'),
+    mongoose = require('mongoose'),
+    morgan = require('morgan'),
+    ip = require('ip'),
+    User = require('./models/User'),
+    Socket = require('./models/Socket'),
+    auth = require('./controllers/auth'),
+    cards = require('./controllers/cards'),
+    sockets = require('./controllers/sockets'),
+    users = require('./controllers/users'),
+    NfcReader = require('./scripts/NfcReader'),
+    TCPClient = require('./scripts/TCPClient');
 
 /**
  * App
@@ -76,7 +77,7 @@ app.get('*', function (req, res) {
  * @type {http.Server}
  */
 var server = app.listen(config.PORT, function () {
-    console.log(chalk.green("Server is listening on port " + config.PORT));
+    console.log(chalk.green("Server is running under " + ip.address() + ':' + config.PORT));
 });
 
 var io = require('socket.io').listen(server);
@@ -91,9 +92,9 @@ nfcReader.start();
  * Start TCP client
  */
 /*
-var tcpClient = new TCPClient();
-tcpClient.start();
-*/
+ var tcpClient = new TCPClient();
+ tcpClient.start();
+ */
 
 /**
  * Socket.io server
