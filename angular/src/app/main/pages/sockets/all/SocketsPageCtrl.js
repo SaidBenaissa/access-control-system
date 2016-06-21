@@ -47,7 +47,7 @@
             $log.debug(socket);
             $http.post(apiBase + 'sockets/color', {
                 color: socket.color.value,
-                deviceId: socket.socketId
+                deviceId: socket.socket_id
             }).then(function (data) {
                 $log.debug(data);
             });
@@ -57,7 +57,7 @@
             $log.debug(socket);
             $http.post(apiBase + 'sockets/switch', {
                 switch: socket.state ? "1" : "0",
-                deviceId: socket.socketId
+                deviceId: socket.socket_id
             }).then(function (data) {
                 $log.debug(data);
             });

@@ -51,7 +51,7 @@ db.once('open', function () {
     Socket.remove({}, function () {
         for (var i = 1; i < 7; i++) {
             var s = new Socket({
-                socketId: i + ""
+                socket_id: i + ""
             });
             s.save();
         }

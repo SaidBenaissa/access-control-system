@@ -6,11 +6,11 @@
     </tr>
     <tr ng-repeat="socket in vm.sockets" class="editable-row">
         <td>
-            {{ socket.socketId }}
+            {{ socket.socket_id }}
         </td>
         <td class="select-td">
         <span>
-          {{ socket.activeUser || 'none' }}
+          {{ socket.user.name || 'none' }}
         </span>
         </td>
         <td>

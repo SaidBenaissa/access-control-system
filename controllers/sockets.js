@@ -13,9 +13,9 @@ router.post('/switch', function (req, res) {
 });
 
 router.get('/', function (req, res) {
-    Socket.find({}, function (err, sockets) {
+    Socket.find({}).sort({socket_id: 'asc'}).populate('user').exec(function (err, sockets) {
         res.json(sockets);
-    }).sort({socketId: 'asc'});
+    });
 });
 
 module.exports = router;

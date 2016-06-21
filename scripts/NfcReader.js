@@ -28,7 +28,7 @@ NfcReader.prototype = {
         data = data.toString().trim();
         var cardLog = new CardLog({chipId: data});
         cardLog.save(function (err, cardLog) {
-            Socket.find({}).populate('user').exec(function (err, sockets) {
+            Socket.find({}).populate('user').sort({socket_id: 'asc'}).exec(function (err, sockets) {
                 Card.findOne({chipId: data}, function (err, card) {
                     if (card) {
                         User.findOne({card: card._id}, function (err, user) {
@@ -37,7 +37,7 @@ NfcReader.prototype = {
                                 for (var i = 1; i < 7; i++) {
                                     if (user.permissions['dev' + i]) {
                                         if (sockets[i - 1].user) {
-                                            if (sockets[i - 1].user._id == user._id) {
+                                            if (sockets[i - 1].user._id + "" == user._id + "") {
                                                 sockets[i - 1].user = undefined;
                                                 sockets[i - 1].active = false;
                                                 sockets[i - 1].save();

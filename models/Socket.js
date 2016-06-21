@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var SocketSchema = new Schema({
-    socketId: String,
+    socket_id: String,
     state: {
         type: Boolean,
         default: false,
