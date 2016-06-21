@@ -1,5 +1,6 @@
 var chalk = require('chalk'),
     spawn = require('child_process').spawn,
+    Fibaro = require('./Fibaro'),
     CardLog = require('../models/CardLog'),
     Card = require('../models/Card'),
     User = require('../models/User'),
@@ -40,13 +41,13 @@ NfcReader.prototype = {
                                                 sockets[i - 1].user = undefined;
                                                 sockets[i - 1].active = false;
                                                 sockets[i - 1].save();
-                                                socketStates.push((i - 1) + "", 0 + "");
+                                                socketStates.push(i + "", 0 + "");
                                             }
                                         } else {
                                             sockets[i - 1].user = user._id;
                                             sockets[i - 1].active = true;
                                             sockets[i - 1].save();
-                                            socketStates.push((i - 1) + "", 1 + "");
+                                            socketStates.push(i + "", 1 + "");
                                         }
                                     }
                                 }
