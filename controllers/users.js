@@ -25,8 +25,8 @@ router.post('/register', function (req, res) {
                 user.card = card._id;
                 user.save();
             }
-        })
-
+        });
+        res.json(['OK']);
     });
 });
 
