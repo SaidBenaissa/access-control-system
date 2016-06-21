@@ -4,8 +4,21 @@
 #include <errno.h>
 #include <unistd.h>
 
-int state = 0;
-int device = -1;
+int *devices;
+int *commands;
+int arraySize;
+int deviceIndex;
+
+bool isInArray(int val, int *arr){
+    int i;
+    for (i = 0; i < arraySize; i++) {
+        if (arr[i] == val) {
+            deviceIndex = i;
+            return true;
+        }
+    }
+    return false;
+}
 
 void reset_zway(ZWay zway) {
     zway_controller_set_default(zway);
@@ -20,8 +33,8 @@ int reset_default_coloring(ZWay zway) {
     if (list != NULL) {
         int i = 0;
         while (list[i]) {
-            if (device == -1 || i == device) {
-                zway_cc_switch_binary_set(zway, list[i], 0, state, NULL, NULL, NULL);
+            if(isInArray(i, devices)) {
+                zway_cc_switch_binary_set(zway, list[i], 0, commands[deviceIndex], NULL, NULL, NULL);
             }
             i++;
         }
@@ -66,12 +79,16 @@ int main(int argc, const char *argv[]) {
 
     ZWLog logger = zlog_create(stdout, Silent);
 
-    if (argc >= 2) {
-        state = atoi(argv[1]);
+    devices = new int[argc - 1];
+    commands = new int[argc - 1];
+    arraySize = (argc - 1) / 2;
+    int i = 0;
+    int j = 0;
+    for(i = 1; i < argc - 1; i += 2){
+        devices[j] = atoi(argv[i]);
+        commands[j++] = atoi(argv[i + 1]);
     }
-    if (argc == 3) {
-        device = atoi(argv[2]);
-    }
+
     ZWay zway = NULL;
 #ifdef _WINDOWS
     ZWError r = zway_init(&zway, ZSTR("COM3"), NULL, NULL, NULL, NULL, logger);

@@ -1,7 +1,7 @@
 # access-control-system
 
 ## Installation
-### Mongdod for raspberry
+### Mongod for raspberry
 ```{r, engine='bash', count_lines}
 $ git clone https://github.com/svvitale/mongo4pi.git
 $ cd mongo4pi
@@ -92,4 +92,17 @@ $ kill PID
 If you do not stop mongod correctly, your db may corrupt. Remove `.lock` file
 ```{r, engine='bash', count_lines}
 $ sudo rm /var/lib/mongodb/mongod.lock
+```
+
+### NFC reader error
+When you receive this error, just start server again.
+```{r, engine='bash', count_lines}
+stderr: error   libnfc.driver.acr122_usb        PN532 didn't reply
+error   libnfc.driver.acr122_usb        PN532 init failed, trying again...
+
+stderr: error   libnfc.driver.acr122_usb        Too small reply
+error   libnfc.driver.acr122_usb        PN532 init failed, trying again...
+error   libnfc.driver.acr122_usb        Too small reply
+
+NFC closing code: 1
 ```
