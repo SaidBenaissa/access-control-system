@@ -26,9 +26,7 @@ Fibaro = {
         } else {
             console.log(chalk.yellow("Fibaro is turned off in config file."));
         }
-        res.json(["ok"]);
-
-    },
+     }
 };
 
 module.exports = Fibaro;
