@@ -90,8 +90,10 @@ nfcReader.start();
 /**
  * Start TCP client
  */
+/*
 var tcpClient = new TCPClient();
 tcpClient.start();
+*/
 
 /**
  * Socket.io server
