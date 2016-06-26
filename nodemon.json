@@ -1,0 +1,7 @@
+{
+  "ignore": [
+    "angular/*",
+    "scripts/fibaro/*.c",
+    "scripts/fibaro/*.cpp"
+  ]
+}
