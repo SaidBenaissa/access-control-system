@@ -14,7 +14,7 @@ Fibaro = {
     },
     switch: function (deviceId, value, res) {
         if (config.ENABLE.FIBARO) {
-            this._child = spawn(config.SCRIPT_PATH.FIBARO.SWITCH, [value + "", deviceId + ""]);
+            this._child = spawn(config.SCRIPT_PATH.FIBARO.SWITCH, [deviceId + "", value + ""]);
         } else {
             console.log(chalk.yellow("Fibaro is turned off in config file."));
         }
@@ -26,7 +26,7 @@ Fibaro = {
         } else {
             console.log(chalk.yellow("Fibaro is turned off in config file."));
         }
-     }
+    }
 };
 
 module.exports = Fibaro;

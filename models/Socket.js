@@ -13,4 +13,14 @@ var SocketSchema = new Schema({
     }
 });
 
+SocketSchema.methods.removeUser = function () {
+    this.user = undefined;
+    this.active = false;
+};
+
+SocketSchema.methods.addUser = function (user) {
+    this.user = user._id;
+    this.active = true;
+};
+
 module.exports = mongoose.model('Socket', SocketSchema);

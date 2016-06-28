@@ -38,14 +38,12 @@ NfcReader.prototype = {
                                     if (user.permissions['dev' + i]) {
                                         if (sockets[i - 1].user) {
                                             if (sockets[i - 1].user._id + "" == user._id + "") {
-                                                sockets[i - 1].user = undefined;
-                                                sockets[i - 1].active = false;
+                                                sockets[i - 1].removeUser();
                                                 sockets[i - 1].save();
                                                 socketStates.push(i + "", 0 + "");
                                             }
                                         } else {
-                                            sockets[i - 1].user = user._id;
-                                            sockets[i - 1].active = true;
+                                            sockets[i - 1].addUser(user);
                                             sockets[i - 1].save();
                                             socketStates.push(i + "", 1 + "");
                                         }
@@ -61,6 +59,9 @@ NfcReader.prototype = {
                     }
                     this._listeners.forEach(function (socket) {
                         socket.emit('dashboard', cardLog);
+                    });
+                    this._listeners.forEach(function (socket) {
+                        socket.emit('sockets');
                     });
                 }.bind(this));
             }.bind(this))
