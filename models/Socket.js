@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var SocketSchema = new Schema({
     socket_id: String,
-    state: {
+    active: {
         type: Boolean,
         default: false,
     },
