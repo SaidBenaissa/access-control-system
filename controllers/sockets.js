@@ -9,6 +9,14 @@ router.post('/color', function (req, res) {
 });
 
 router.post('/switch', function (req, res) {
+    if (req.body.switch == 0) {
+        Socket.findOne({socket_id: req.body.deviceId}, function (socket) {
+            if (socket) {
+                socket.removeUser();
+                socket.save();
+            }
+        })
+    }
     Fibaro.switch(req.body.deviceId, req.body.switch, res);
 });
 
