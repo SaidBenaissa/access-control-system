@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('AccessControlSystem.main.pages.form')
+  angular.module('AccessControlSystem.main.pages.sockets')
       .controller('SwitchPanelCtrl', SwitchPanelCtrl);
 
   /** @ngInject */

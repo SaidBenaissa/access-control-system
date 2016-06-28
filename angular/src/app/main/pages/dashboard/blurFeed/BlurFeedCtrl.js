@@ -12,15 +12,7 @@
     function BlurFeedCtrl($http, apiBase, $log, moment, socket) {
         var vm = this;
 
-        $http.get(apiBase + 'cards/log').then(function (data) {
-            $log.debug(data);
-            data.data.forEach(function (obj) {
-                obj.type = 'text-message';
-                obj.date = moment(obj.date).format('DD.MM.YYYY HH:mm:ss');
-                obj.new = false;
-            });
-            vm.feed = data.data;
-        });
+        loadData();
 
         socket.on('dashboard', function (data) {
             data.type = 'text-message';
@@ -32,6 +24,19 @@
         vm.markAsRead = function (message) {
             message.new = false;
         };
+
+        function loadData() {
+            $http.get(apiBase + 'cards/log').then(function (data) {
+                $log.debug(data);
+                data.data.forEach(function (obj) {
+                    obj.type = 'text-message';
+                    obj.date = moment(obj.date).format('DD.MM.YYYY HH:mm:ss');
+                    obj.new = false;
+                });
+                vm.feed = data.data;
+            });
+        }
+
         // vm.feed = [
         //   {
         //     type: 'text-message',

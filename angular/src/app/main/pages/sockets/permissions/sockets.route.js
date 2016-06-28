@@ -12,7 +12,7 @@
     function routeConfig($stateProvider) {
         $stateProvider
             .state('app.main.pages.sockets.permissions', {
-                url: '/sockets/permissions',
+                url: '/permissions',
                 templateUrl: 'app/main/pages/sockets/permissions/tables.html',
                 title: 'Permissions',
                 controller: 'SocketsPermCtrl',

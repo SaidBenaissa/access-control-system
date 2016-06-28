@@ -12,7 +12,7 @@
         vm.cardInfo = {};
 
         vm.save = function () {
-            console.log('som v callbacku');
+            $log.debug("Saving user");
             $http({
                 url: apiBase + 'users/register',
                 method: "POST",

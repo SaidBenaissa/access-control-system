@@ -12,7 +12,7 @@
     function routeConfig($stateProvider) {
         $stateProvider
             .state('app.main.pages.sockets.all', {
-                url: '/sockets/all',
+                url: '/all',
                 templateUrl: 'app/main/pages/sockets/all/tables.html',
                 title: 'All Sockets',
                 controller: 'SocketsPageCtrl',

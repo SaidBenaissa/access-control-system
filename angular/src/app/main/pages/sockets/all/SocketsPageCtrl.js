@@ -9,57 +9,44 @@
         .controller('SocketsPageCtrl', SocketsPageCtrl);
 
     /** @ngInject */
-    function SocketsPageCtrl($http, $log, apiBase) {
+    function SocketsPageCtrl($http, $log, apiBase, socket) {
         var vm = this;
 
-        $http.get(apiBase + 'sockets/').success(function (data) {
-            $log.debug(data);
-            vm.sockets = data;
+
+        vm.changeColor = changeColor;
+
+        vm.switch = switchSocket;
+
+        socket.on('sockets', function (data) {
+            loadData();
         });
 
-        /*[{
-         id: "0",
-         name: "Dev0",
-         activeUser: "Usr0",
-         color: "0",
-         state: true
-         }, {
-         id: "1",
-         name: "Dev1",
-         activeUser: "Usr1",
-         color: "0",
-         state: true
-         }, {
-         id: "2",
-         name: "Dev2",
-         activeUser: "Usr2",
-         color: "1",
-         state: false
-         }, {
-         id: "3",
-         name: "Dev3",
-         activeUser: "Usr3",
-         color: 6,
-         state: true
-         }];*/
+        loadData();
 
-        vm.changeColor = function (socket) {
+        function changeColor(socket) {
             $log.debug(socket);
             $http.post(apiBase + 'sockets/color', {
                 color: socket.color.value,
                 deviceId: socket.socket_id
-            }).then(function (data) {
+            }).success(function (data) {
                 $log.debug(data);
             });
-        };
+        }
 
-        vm.switch = function (socket) {
+        function switchSocket(socket) {
             $log.debug(socket);
             $http.post(apiBase + 'sockets/switch', {
-                switch: socket.state ? "1" : "0",
+                switch: socket.active ? "1" : "0",
                 deviceId: socket.socket_id
-            }).then(function (data) {
+            }).success(function (data) {
                 $log.debug(data);
+            });
+        }
+
+        function loadData() {
+            $http.get(apiBase + 'sockets/').success(function (data) {
+                $log.debug(data);
+                vm.sockets = data;
             });
         }
     }

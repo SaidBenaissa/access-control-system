@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    angular.module('AccessControlSystem.main.pages.form')
+    angular.module('AccessControlSystem.main.pages.sockets')
         .directive('switch', switchDirective);
 
     /** @ngInject */

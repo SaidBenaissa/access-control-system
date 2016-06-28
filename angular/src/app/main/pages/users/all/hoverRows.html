@@ -1,18 +1,16 @@
-<div class="horizontal-scroll">
-  <table class="table table-hover">
+<table class="table table-bordered table-hover table-condensed">
     <thead>
     <tr class="black-muted-bg">
-      <th class="align-right">Name</th>
-      <th class="align-right">E-mail</th>
-      <th class="align-right">Card ID</th>
+        <th class="align-right">Name</th>
+        <th class="align-right">E-mail</th>
+        <th class="align-right">Card ID</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="item in vm.metricsTableData" class="no-top-border">
-      <td class="align-right">{{item.name}}</td>
-      <td class="align-right">{{item.email}}</td>
-      <td class="align-right">{{item.card.chipId}}</td>
+        <td class="align-right">{{ item.name }}</td>
+        <td class="align-right">{{ item.email }}</td>
+        <td class="align-right">{{ item.card.chipId }}</td>
     </tr>
     </tbody>
-  </table>
-</div>
+</table>

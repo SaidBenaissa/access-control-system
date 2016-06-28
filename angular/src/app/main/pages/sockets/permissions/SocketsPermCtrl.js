@@ -1,7 +1,3 @@
-/**
- * @author v.lugovsky
- * created on 16.12.2015
- */
 (function () {
     'use strict';
 
@@ -12,12 +8,18 @@
     function SocketsPermCtrl($http, $log, apiBase) {
         var vm = this;
 
-        $http.get(apiBase + 'users/permissions').success(function (data) {
-            $log.debug(data);
-            vm.users = data;
-        });
+        vm.update = update;
 
-        vm.update=function (user) {
+        loadData();
+
+        function loadData() {
+            $http.get(apiBase + 'users/permissions').success(function (data) {
+                $log.debug(data);
+                vm.users = data;
+            });
+        }
+
+        function update(user) {
             $log.debug(user);
             $http.post(apiBase + 'users/update', user);
         }

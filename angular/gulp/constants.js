@@ -8,6 +8,7 @@ gulp.task('constants', function () {
     argv = require('yargs').argv,
     env = argv.env === undefined ? (process.env.NODE_ENV === undefined ? 'dev' : process.env.NODE_ENV) : argv.env,
     envConfig = myConfig[env];
+    console.log("Building in environment " + env);
 
   return ngConstant({
     name: 'angular',

@@ -1,9 +1,11 @@
 <table class="table table-bordered table-hover table-condensed">
-    <tr>
+    <thead>
+    <tr class="black-muted-bg">
         <td>Socket</td>
         <td>Active User</td>
         <td>Actions</td>
     </tr>
+    </thead>
     <tr ng-repeat="socket in vm.sockets" class="editable-row">
         <td>
             {{ socket.socket_id }}
@@ -15,7 +17,7 @@
         </td>
         <td>
             <div class="switches clearfix">
-                <switch color="success" ng-model="socket.state" ng-change="vm.switch(socket)"></switch>
+                <switch color="success" ng-model="socket.active" ng-change="vm.switch(socket)"></switch>
             </div>
         </td>
     </tr>
