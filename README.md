@@ -110,7 +110,7 @@ For development mode you can use `nodemon app.js`. If you do not want live reloa
 ##### Running in production
 For running application in production you can use `forever`. For start application use `forever start app.js`.
 
-##### Compiling scripts used in application
+#### Compiling scripts used in application
 ##### NFC reader
 For compiling NFC read file use from `/scripts` folder
 ```{r, engine='bash', count_lines}
