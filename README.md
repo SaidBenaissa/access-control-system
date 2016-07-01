@@ -2,14 +2,14 @@
 
 ## Installation
 ### Mongod for raspberry
+MongoDB do not have official libs for ARM processors, so you must use next commands for installing MongoDB.
 ```{r, engine='bash', count_lines}
 $ git clone https://github.com/svvitale/mongo4pi.git
 $ cd mongo4pi
 $ ./install.sh
 ```
 
-
-### Boost library (experimental)
+### Boost library (experimental, not used in project)
 For installation use
 ```{r, engine='bash', count_lines}
 $ sudo apt-get install libboost-all-dev
@@ -25,7 +25,7 @@ Test with
 $ ./boostserver
 ```
 
-### Boost library with libnfc (still experimental)
+### Boost library with libnfc (experimental, not used in project)
 For installation use
 ```{r, engine='bash', count_lines}
 $ g++ -L/opt/z-way-server/libs -I/opt/z-way-server/libzway -lzway -lzcommons -lboost_system -lxml2 -lz -lm -lcrypto -larchive -pthread -o boostserver boostserver.cpp turn_off_on.c -std=c++11
@@ -35,6 +35,9 @@ Test with
 $ ./boostserver
 ```
 
+
+### Lib Z-Way
+For installation Z-Way please follow previous work `power-management`.
 
 ### touchatag reader
 For touchatag reader you need to have this library `libnfc`.
@@ -76,6 +79,52 @@ $ nfc-list
 $ nfc-poll
 ```
 The first command just lists all devices but the second can read your tag via device.
+
+
+### Application
+Our application consists of two parts backend - node.js, express and fronend - angular. Node and npm are required before installation both parts. You can follow steps in official page.
+
+#### Frontend part
+Before installing please copy file `angular/gulp/config.json.example` to `angular/gulp/config.json` and provide your configuration settings.
+
+Run next scripts from `angular` folder
+```{r, engine='bash', count_lines}
+$ npm install -g yo gulp bower
+$ npm install
+$ bower install
+```
+Now you have all libraries downloaded.
+
+##### Development mode with live reload
+You can run application in developer mode by typing `gulp watch [--serve={prod|dev}]`. If you do not provide env, default environment is dev.
+
+#### Building application
+For building application just type `gulp [--serve={prod|dev}]`. Default environment is dev. Now your application is builded in `release` folder.
+
+#### Backend part
+Before installing please copy file `config.json.example` to `config.json` and provide your configuration settings. Now just run `npm install` for download all assets.
+
+##### Development mode with live reload
+For development mode you can use `nodemon app.js`. If you do not want live reload in dev mode, run application `node app.js`
+
+##### Running in production
+For running application in production you can use `forever`. For start application use `forever start app.js`.
+
+##### Compiling scripts used in application
+##### NFC reader
+For compiling NFC read file use from `/scripts` folder
+```{r, engine='bash', count_lines}
+$ gcc -o read_nfc red_nfc.c -lnfc
+```
+
+##### Fibaro plugs
+For compiling Fibaro plugs files use from `/scripts/fibaro` folder.
+```{r, engine='bash', count_lines}
+$ g++ -L/opt/z-way-server/libs -I/opt/z-way-server/libzway -lzway -lzcommons -o set_color set_color.c -std=c++11
+$ g++ -L/opt/z-way-server/libs -I/opt/z-way-server/libzway -lzway -lzcommons -o turn_off_on turn_off_on.c -std=c++11
+```
+**IMPORTANT** do not forget to change path to your scripts in `/scripts/fibaro/set_color.sh` and `/scripts/fibaro/turn_off_on.sh`
+
 
 ## Problems
 #### Port is in use
