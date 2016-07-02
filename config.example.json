@@ -8,8 +8,9 @@
   "SCRIPT_PATH": {
     "NFC": "./read_nfc",
     "FIBARO": {
-      "COLOR": "/home/pi/",
-      "SWITCH": "/home/pi/"
+      "COLOR": "/home/pi/Desktop/access-control-system/scripts/fibaro/set_color.sh",
+      "SWITCH": "/home/pi/Desktop/access-control-system/scripts/fibaro/turn_off_on.sh",
+      "SETUP": "/home/pi/Desktop/access-control-system/scripts/fibaro/setup.sh"
     }
   },
   "FIBARO": {

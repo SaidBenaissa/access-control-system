@@ -13,6 +13,7 @@ var config = require('./config.json'),
     cards = require('./controllers/cards'),
     sockets = require('./controllers/sockets'),
     users = require('./controllers/users'),
+    Fibaro = require('./scripts/Fibaro'),
     NfcReader = require('./scripts/NfcReader'),
     TCPClient = require('./scripts/TCPClient');
 
@@ -78,6 +79,7 @@ app.get('*', function (req, res) {
  */
 var server = app.listen(config.PORT, function () {
     console.log(chalk.green("Server is running under " + ip.address() + ':' + config.PORT));
+    Fibaro.setupDevices();
 });
 
 var io = require('socket.io').listen(server);

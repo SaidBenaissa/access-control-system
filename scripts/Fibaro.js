@@ -26,6 +26,14 @@ Fibaro = {
         } else {
             console.log(chalk.yellow("Fibaro is turned off in config file."));
         }
+    },
+    setupDevices: function () {
+        if (config.ENABLE.FIBARO) {
+            console.log(chalk.yellow("We are now setting up devices before use."));
+            this._child = spawn(config.SCRIPT_PATH.FIBARO.SETUP);
+        }else{
+            console.log(chalk.yellow("Fibaro is turned off in config file."));
+        }
     }
 };
 
