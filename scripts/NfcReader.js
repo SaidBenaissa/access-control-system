@@ -45,8 +45,6 @@ NfcReader.prototype = {
                                                 offArray.push(i + "", 0 + "");
                                             }
                                         } else {
-                                            sockets[i - 1].addUser(user);
-                                            sockets[i - 1].save();
                                             onArray.push(i + "", 1 + "");
                                         }
                                     }
@@ -54,6 +52,13 @@ NfcReader.prototype = {
                                 if (offArray.length) {
                                     socketStates = offArray;
                                 } else {
+                                    onArray.filter(function (item, index) {
+
+                                        return index % 2 == 0;
+                                    }).forEach(function (obj) {
+                                        sockets[obj - 1].addUser(user);
+                                        sockets[obj - 1].save();
+                                    });
                                     socketStates = onArray.concat(offArray);
                                 }
                                 Fibaro.switchDevices(socketStates);
