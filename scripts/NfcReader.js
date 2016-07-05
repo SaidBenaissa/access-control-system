@@ -33,21 +33,28 @@ NfcReader.prototype = {
                     if (card) {
                         User.findOne({card: card._id}, function (err, user) {
                             if (user.permissions) {
-                                var socketStates = [];
+                                var socketStates = [],
+                                    onArray = [],
+                                    offArray = [];
                                 for (var i = 1; i < 7; i++) {
                                     if (user.permissions['dev' + i]) {
                                         if (sockets[i - 1].user) {
                                             if (sockets[i - 1].user._id + "" == user._id + "") {
                                                 sockets[i - 1].removeUser();
                                                 sockets[i - 1].save();
-                                                socketStates.push(i + "", 0 + "");
+                                                offArray.push(i + "", 0 + "");
                                             }
                                         } else {
                                             sockets[i - 1].addUser(user);
                                             sockets[i - 1].save();
-                                            socketStates.push(i + "", 1 + "");
+                                            onArray.push(i + "", 1 + "");
                                         }
                                     }
+                                }
+                                if (offArray.length) {
+                                    socketStates = offArray;
+                                } else {
+                                    socketStates = onArray.concat(offArray);
                                 }
                                 Fibaro.switchDevices(socketStates);
                             }

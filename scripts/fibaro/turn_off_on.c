@@ -34,9 +34,7 @@ int reset_default_coloring(ZWay zway) {
         int i = 0;
         while (list[i]) {
             if(isInArray(i, devices)) {
-                zway_cc_configuration_set(zway, list[i], 0, 0x01, 1, 0x01, NULL, NULL, NULL);
                 zway_cc_switch_binary_set(zway, list[i], 0, commands[deviceIndex], NULL, NULL, NULL);
-                zway_cc_configuration_set(zway, list[i], 0, 0x01, 0, 0x01, NULL, NULL, NULL);
             }
             i++;
         }
