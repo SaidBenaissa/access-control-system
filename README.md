@@ -96,10 +96,10 @@ $ bower install
 Now you have all libraries downloaded.
 
 ##### Development mode with live reload
-You can run application in developer mode by typing `gulp watch [--serve={prod|dev}]`. If you do not provide env, default environment is dev.
+You can run application in developer mode by typing `gulp watch [--env={prod|dev}]`. If you do not provide env, default environment is dev.
 
 #### Building application
-For building application just type `gulp [--serve={prod|dev}]`. Default environment is dev. Now your application is builded in `release` folder.
+For building application just type `gulp [--env={prod|dev}]`. Default environment is dev. Now your application is builded in `release` folder.
 
 #### Backend part
 Before installing please copy file `config.json.example` to `config.json` and provide your configuration settings. Now just run `npm install` for download all assets.
