@@ -118,7 +118,7 @@ $ gcc -o read_nfc red_nfc.c -lnfc
 ```
 
 ##### Fibaro plugs
-For compiling Fibaro plugs files use from `/scripts/fibaro` folder.
+For compiling Fibaro plugs files use file from `/scripts/fibaro` folder.
 ```{r, engine='bash', count_lines}
 $ g++ -L/opt/z-way-server/libs -I/opt/z-way-server/libzway -lzway -lzcommons -o set_color set_color.c -std=c++11
 $ g++ -L/opt/z-way-server/libs -I/opt/z-way-server/libzway -lzway -lzcommons -o turn_off_on turn_off_on.c -std=c++11
