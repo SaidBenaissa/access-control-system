@@ -85,7 +85,7 @@ The first command just lists all devices but the second can read your tag via de
 Our application consists of two parts backend - node.js, express and fronend - angular. Node and npm are required before installation both parts. You can follow steps in official page.
 
 #### Frontend part
-Before installing please copy file `angular/gulp/config.json.example` to `angular/gulp/config.json` and provide your configuration settings.
+Our frontend is based on [blur-admin](https://github.com/akveo/blur-admin) template. Before installing please copy file `angular/gulp/config.json.example` to `angular/gulp/config.json` and provide your configuration settings.
 
 Run next scripts from `angular` folder
 ```{r, engine='bash', count_lines}
